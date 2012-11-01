@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-     Version mapping
-     1.7.9   171.2
--->
-
 <packages>
 
 <package
@@ -14,13 +9,13 @@
   priority="10"
   reboot="false">
 
-  <depends package-id="dotnet3" os="windows xp" />
+  <depends package-id="dotnet4" />
 
-  <variable name="version" value="171.2" />
-  <variable name='PKG_SOURCE'      value='%SOFTWARE%\Mark5\%PROCESSOR_ARCHITECTURE%\Mark5ClientSetup.msi' />
+  <variable name="version" value="1.17.6" />
+  <variable name='PKG_SOURCE'      value='%SOFTWARE%\Mark5\%PROCESSOR_ARCHITECTURE%\Mark5Install.msi' />
   <variable name='PKG_DESTINATION' value='%PROGRAMFILES%\Mark5' />
 
-  <check type="uninstall" condition="versiongreaterorequal" path="Mark5 Client" />
+  <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION%\Mark5.exe" value="%version%" />
 
   <install   cmd='msiexec /i "%PKG_SOURCE%" %MSI%' />
   <install   cmd='%COMSPEC% /C copy /Y "%SOFTWARE%\Mark5\ConnectionInfo.xml" "%PKG_DESTINATION%"' />
