@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<packages>
+
+<package
+  id="pdfxchange_viewer"
+  name="PDF X Change Viewer"
+  revision="%version%-0"
+  priority="10"
+  reboot="false">
+
+  <variable name="version" value="2.5.207.0" />
+  <variable name="options" value="ASSOC=0 CREATEDESKTOPICON=0" />
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\PDFXChange\Viewer\%PROCESSOR_ARCHITECTURE%\PXCViewer_x86.msi' architecture="x86" />
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\PDFXChange\Viewer\%PROCESSOR_ARCHITECTURE%\PXCViewer_x64.msi' architecture="x64" />
+
+  <check type="uninstall" condition="versiongreaterorequal" path="PDF-XChange Viewer" value="%version%" />
+
+  <install   cmd='msiexec /i "%PKG_SOURCE%" %MSI% %options%' />
+  <upgrade   include='install' />
+  <downgrade include='install' />
+
+  <remove    cmd='msiexec /x "%PKG_SOURCE%" %MSI%' />
+</package>
+
+</packages>
