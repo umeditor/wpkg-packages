@@ -91,6 +91,7 @@
   1) Turns out the uninstall name is different between computers on XP (haven't verified w7). Great...
   2) PKG_PARAMS comes from: <url:http://download.lenovo.com/ibmdl/pub/pc/pccbbs/thinkvantage_en/systemupdate401-2011-07-25.txt>
   3) I added /norestart to PKG_PARAMS
+  4) Lots of different names depending on version, hence the 3 uninstall checks
 
   INSTALLER
   1) Download .exe from lenovo.com
@@ -99,7 +100,7 @@
 <package
   id="tp_systemupdate"
   name="ThinkPad System Update"
-  revision="%version%-1"
+  revision="%version%-2"
   priority="10"
   reboot="false">
 
@@ -114,6 +115,7 @@
   <check type="logical" condition="or">
     <check type="uninstall" condition="versiongreaterorequal" path="System Update" value="%version%" />
     <check type="uninstall" condition="versiongreaterorequal" path="ThinkVantage System Update" value="%version%" />
+    <check type="uninstall" condition="versiongreaterorequal" path="Lenovo System Update" value="%version%" />
   </check>
 
   <install cmd='net stop SUService'><exit code="2"/></install>
