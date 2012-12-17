@@ -63,7 +63,7 @@
 <package
   id="googletalk"
   name="Google Talk"
-  revision="%version%-4"
+  revision="%version%-0"
   priority="10"
   reboot="false">
 
@@ -78,8 +78,9 @@
   <install cmd='REG DELETE "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v googletalk /f'><exit code="1" /></install>
   <install cmd='REG DELETE "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run" /v googletalk /f' architecture="x64"><exit code="1" /></install>
 
+  <upgrade   include='kill' />
   <upgrade   include='install' />
-  <downgrade include='install' />
+  <downgrade include='upgrade' />
 
   <remove include='kill' />
   <remove cmd='"%PKG_DESTINATION%\uninstall.exe" /S' />
