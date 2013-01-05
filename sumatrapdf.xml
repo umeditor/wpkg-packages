@@ -14,7 +14,9 @@
   priority="10"
   reboot="false">
 
-  <variable name="version" value="2.1.1" />
+  <depends package-id="ghostscript" />
+
+  <variable name="version" value="2.2" />
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\SumatraPDF"      architecture="x86" />
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\SumatraPDF" architecture="x64" />
 

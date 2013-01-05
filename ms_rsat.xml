@@ -3,13 +3,24 @@
 <packages xmlns:xsi="http://www.wpkg.org/packages" xsi:noNamespaceSchemaLocation="xsd/packages.xsd">
 
 <!--
-  1) This can only be installed on Win7
+  1) This can only be installed on Win7/8
   2) There is currently no way to upgrade anything so only install stanzas are provided
   3) TODO: Find a way to check if it has been installed
 -->
 
 <package
   id="rsat"
+  name="Remote Server Admininistration Tools for Windows"
+  revision="1"
+  priority="10"
+  execute="once">
+
+  <depends package-id="rsat7" os="windows 7" />
+  <depends package-id="rsat8" os="windows 8" />
+</package>
+
+<package
+  id="rsat7"
   name="Remote Server Admininistration Tools for Windows 7"
   revision="958830-2"
   reboot="false"
@@ -23,6 +34,24 @@
     <exit code='2359302' /> <!-- I think this means 'Already installed' -->
   </install>
   <remove    cmd='wusa /uninstall %PKG_SOURCE% /quiet /norestart' os="windows 7" />
+
+</package>
+
+<package
+  id="rsat8"
+  name="Remote Server Admininistration Tools for Windows 8"
+  revision="2693643-0"
+  reboot="false"
+  priority="10"
+  execute="once">
+
+  <variable name="PKG_SOURCE" value="%SOFTWARE%\Microsoft\RSAT\Windows6.2-KB2693643-x86.msu" architecture="x86" />
+  <variable name="PKG_SOURCE" value="%SOFTWARE%\Microsoft\RSAT\Windows6.2-KB2693643-x64.msu" architecture="x64" />
+
+  <install   cmd='wusa %PKG_SOURCE% /quiet /norestart' os="windows 8">
+    <exit code='2359302' /> <!-- I think this means 'Already installed' -->
+  </install>
+  <remove    cmd='wusa /uninstall %PKG_SOURCE% /quiet /norestart' os="windows 8" />
 
 </package>
 
