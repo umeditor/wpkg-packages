@@ -22,7 +22,7 @@
   priority='10'
   execute='once'>
 
-  <depends package-id='java6' />
+  <depends package-id='java7' />
 
 </package>
 
