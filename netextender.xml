@@ -13,7 +13,7 @@
 <package
   id="netextender"
   name="SonicWALL SSL-VPN NetExtender"
-  revision="%version%-0"
+  revision="%version%-1"
   reboot="false"
   priority="10">
 
@@ -30,6 +30,7 @@
     <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION%\NEService.exe" value="%fileversion%" />
   </check>
 
+  <install include='kill' />
   <!-- Version 3 -->
   <install cmd='"%PKG_DESTINATION%\uninst.exe" /S'><exit code='any' /></install>
   <!-- Version 4 -->
@@ -43,6 +44,15 @@
   <downgrade include='install' />
 
   <remove    cmd='msiexec /x "%PKG_SOURCE_DIR%\NetExtender.%version%.msi" %MSI%' />
+
+  <commands>
+    <command type='kill' cmd='taskkill /f /im negui.exe'>
+      <exit code='any' />
+    </command>
+    <command type='kill' cmd='sc stop SONICWALL_NetExtender'>
+      <exit code='any' />
+    </command>
+  </commands>
 
 </package>
 
