@@ -81,7 +81,7 @@
 <package
   id="java7"
   name="Java 7"
-  revision="%version%-2"
+  revision="%version%-3"
   reboot="false"
   priority="10">
 
@@ -91,8 +91,8 @@
   <variable name='flags' value='ADDLOCAL=ALL IEXPLORER=1 MOZILLA=1 REBOOT=Suppress' />
   <variable name='PKG_DESTINATION' value='%PROGRAMFILES%\Java\jre7' />
 
-  <check type="uninstall" condition="exists" path="Java(TM) 7 Update %last%" />
-  <check type="uninstall" condition="exists" path="Java(TM) 7 Update %last% (64-bit)" architecture="x64" />
+  <check type="uninstall" condition="exists" path="Java 7 Update %last%" />
+  <check type="uninstall" condition="exists" path="Java 7 Update %last% (64-bit)" architecture="x64" />
   <check type="file" condition="exists" path="%PKG_DESTINATION%\bin\javacpl.exe" />
 
   <install include="kill" />
