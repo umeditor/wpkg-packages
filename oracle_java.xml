@@ -81,7 +81,7 @@
 <package
   id="java7"
   name="Java 7"
-  revision="%version%-0"
+  revision="%version%-1"
   reboot="false"
   priority="10">
 
@@ -98,7 +98,7 @@
   <install include="kill" />
   <install cmd='%COMSPEC% /C FOR /L %I IN (0,1,%last%) DO msiexec %MSI% /x {26A24AE4-039D-4CA4-87B4-2F832170%IFF} >NUL 2>&amp;1'><exit code='1605' /></install>
   <install cmd='%COMSPEC% /C FOR /L %I IN (0,1,%last%) DO msiexec %MSI% /x {26A24AE4-039D-4CA4-87B4-2F864170%IFF} >NUL 2>&amp;1' architecture="x64"><exit code='1605' /></install>
-  <install cmd='"%SOFTWARE%\Java\x86\jre%version%.exe" %flags%'>                                   <exit code="3010" /></install>
+  <install cmd='"%SOFTWARE%\Java\x86\jre%short%-windows-i586.exe" /s %flags%'>                                   <exit code="3010" /></install>
   <install cmd='"%SOFTWARE%\Java\amd64\jre-%short%-windows-x64.exe" /s %flags%' architecture="x64"><exit code="3010" /></install>
   <install cmd='REG ADD "HKLM\SOFTWARE\JavaSoft\Java Update\Policy" /v EnableAutoUpdateCheck /t REG_DWORD /d 0 /f' />
   <install cmd='REG ADD "HKLM\SOFTWARE\JavaSoft\Java Update\Policy" /v EnableJavaUpdate /t REG_DWORD /d 0 /f' />
