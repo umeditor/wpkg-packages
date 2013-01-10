@@ -29,14 +29,14 @@
   reboot="false"
   priority="10">
 
-  <variable name="last" value="0" />
+  <variable name="last" value="1" />
   <variable name="mainversion" value="11.0" />
   <variable name="version" value="%mainversion%.%last%" />
   <variable name="language" value="en_US" lcid="0409,0809,4809" />
 
   <check type="logical" condition="or">
-    <check type="uninstall" condition="exists" path="Adobe Reader X (%version%)" />
-    <check type="uninstall" condition="exists" path="Adobe Reader X (%version%).*" />
+    <check type="uninstall" condition="exists" path="Adobe Reader XI (%version%)" />
+    <check type="uninstall" condition="exists" path="Adobe Reader XI (%version%).*" />
   </check>
 
   <install cmd='msiexec %MSI% /i "%SOFTWARE%\Adobe\Reader\%mainversion%\AdbeRdr1100_%language%.msi" TRANSFORMS="%SOFTWARE%\Adobe\Reader\11\readerXI.mst"'><exit code="3010" reboot="false" /></install>
@@ -63,7 +63,7 @@
   reboot="false"
   priority="10">
 
-  <variable name="last" value="2" /> <!-- change this when the version increases -->
+  <variable name="last" value="3" /> <!-- change this when the version increases -->
   <variable name="mainversion" value="9.5" />
   <variable name="version" value="%mainversion%.%last%" />
   <variable name="lt" value='"%WPKG%\tools\localetool.exe"' />
