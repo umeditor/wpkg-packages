@@ -19,7 +19,7 @@
   reboot="false"
   priority="10">
 
-  <variable name='version' value='6.0.32.126' />
+  <variable name='version' value='6.2.32.106' />
   <variable name='flags' value='INSTALLLEVEL=1 ALLUSERS=1 STARTSKYPE=FALSE TRANSFORMS=:removeStartup.mst TRANSFORMS=:removeDesktopShortcut.mst' />
   <variable name='PKG_DESTINATION' value='%PROGRAMFILES%\Skype\Phone'      architecture="x86" />
   <variable name='PKG_DESTINATION' value='%PROGRAMFILES(x86)%\Skype\Phone' architecture="x64" />
