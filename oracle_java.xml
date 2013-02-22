@@ -2,7 +2,8 @@
 
 <!--
   NOTES
-  1) Download from: http://www.oracle.com/technetwork/java/javase/downloads/index.html
+  1) Download from:
+     http://www.oracle.com/technetwork/java/javase/downloads/index.html
   2) We install both 32-bit and 64-bit JRE on 64-bit hosts
   3) 32-bit installations on 64-bit is broken when using the .exe installer - you NEED to get the .cab and .msi from the 32 bit installer for 64 bit platforms
   4) install/up/downgrade must all remove the CURRENT VERSION before installing it as installing on top of the same version leaves the package in an inconsistent state
@@ -33,7 +34,7 @@
   reboot="false"
   priority="10">
 
-  <variable name="last" value="39" /> <!-- last part of the version - used for looping through installed versions -->
+  <variable name="last" value="41" /> <!-- last part of the version - used for looping through installed versions -->
   <variable name="short" value="6u%last%" /> <!-- part of the installer file name -->
   <variable name="version" value="1.6.0_%last%" />
   <variable name='flags' value='ADDLOCAL=ALL IEXPLORER=1 MOZILLA=1 REBOOT=Suppress' />
@@ -85,7 +86,7 @@
   reboot="false"
   priority="10">
 
-  <variable name="last" value="13" />        <!-- last part of the version - used for looping through installed versions -->
+  <variable name="last" value="15" />        <!-- last part of the version - used for looping through installed versions -->
   <variable name="short" value="7u%last%" /> <!-- part of the installer file name -->
   <variable name="version" value="1.7.0_%last%" />
   <variable name='flags' value='ADDLOCAL=ALL IEXPLORER=1 MOZILLA=1 REBOOT=Suppress' />
