@@ -14,16 +14,40 @@
 
 </package>
 
-<!--
-  NOTES
-  1) We install both 32 and 64 bit on 64 bit machines
-  2) It is also possible to use /unattend, however it will force restart this way
--->
+<package
+  id="ie10"
+  name="Internet Explorer 10 - for Windows 7"
+  revision="0"
+  reboot="false"
+  priority="10">
+
+  <check type="logical" condition="or">
+    <check type="uninstall" condition="exists" path="Windows Internet Explorer 10" />
+    <check type="file" condition="versiongreaterorequal" path="%PROGRAMFILES%\Internet Explorer\iexplore.exe" value="10.0.9200.16521" />
+  </check>
+
+  <variable name='lang' value='en-us' lcidOS='409' />
+  <variable name='lang' value='nl-nl' lcidOS='413' />
+
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\Microsoft\IE10\IE10-Windows6.1-x86-%lang%.exe' architecture='x86' />
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\Microsoft\IE10\IE10-Windows6.1-x64-%lang%.exe' architecture='x64' />
+
+  <install cmd='"%PKG_SOURCE%" /passive /norestart'>
+    <exit code="3010" reboot="postponed" />
+  </install>
+
+  <!--
+  <remove cmd='"%WINDIR%\ie10\spuninst\spuninst.exe" %MSI%'>
+    <exit code="3010" reboot="false" />
+  </remove>
+  -->
+
+</package>
 
 <package
   id="ie9"
   name="Internet Explorer 9 - for Windows 7"
-  revision="5"
+  revision="6"
   reboot="false"
   priority="10">
 
@@ -41,7 +65,7 @@
   <install cmd='wusa "%PKG_SOURCE%" /quiet /norestart'>
     <exit code='3010' />
   </install>
-  <install cmd='"%SOFTWARE%\Microsoft\IE9\%PROCESSOR_ARCHITECTURE%\IE9-Windows7-%lang%.exe" /passive /norestart /update-no'>
+  <install cmd='"%SOFTWARE%\Microsoft\IE9\%PROCESSOR_ARCHITECTURE%\IE9-Windows7-%lang%.exe" /passive /norestart'>
     <exit code="3010" reboot="postponed" />
   </install>
   <install include='search' />
