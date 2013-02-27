@@ -10,7 +10,7 @@
   priority="10">
 
   <depends package-id='ie8' os='windows xp' />
-  <depends package-id='ie9' os='windows 7' />
+  <depends package-id='ie10' os='windows 7' />
 
 </package>
 
