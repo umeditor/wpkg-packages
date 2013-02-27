@@ -73,10 +73,6 @@
   <upgrade   include='search' />
   <downgrade include='upgrade' />
 
-  <remove cmd='"%WINDIR%\ie9\spuninst\spuninst.exe" %MSI%'>
-    <exit code="3010" reboot="postponed" />
-  </remove>
-
   <commands>
     <command type='search' cmd='%COMSPEC% /c IF EXIST "%SOFTWARE%\Microsoft\IE9\iesearch.reg" regedit /s "%SOFTWARE%\Microsoft\IE9\iesearch.reg"' />
   </commands>
