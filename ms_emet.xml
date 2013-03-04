@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<packages xmlns:xsi="http://www.wpkg.org/packages" xsi:noNamespaceSchemaLocation="xsd/packages.xsd">
+
+<package
+  id="emet"
+  name="Enhanced Mitigation Experience Toolkit"
+  revision="%version%-0"
+  reboot="false"
+  priority="10">
+
+  <variable name="version" value="3.0.0" />
+
+  <check type="uninstall" condition="versiongreaterorequal" path="EMET" value="%version%" />
+
+  <install cmd='msiexec /i "%SOFTWARE%\Microsoft\EMET\EMET Setup.msi" %MSI%' />
+
+  <upgrade include="install" />
+  <downgrade include="install" />
+
+  <remove cmd='msiexec /x "%SOFTWARE%\Microsoft\EMET\EMET Setup.msi" %MSI%' />
+
+</package>
+
+</packages>
