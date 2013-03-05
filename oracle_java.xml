@@ -34,7 +34,7 @@
   reboot="false"
   priority="10">
 
-  <variable name="last" value="41" /> <!-- last part of the version - used for looping through installed versions -->
+  <variable name="last" value="43" /> <!-- last part of the version - used for looping through installed versions -->
   <variable name="short" value="6u%last%" /> <!-- part of the installer file name -->
   <variable name="version" value="1.6.0_%last%" />
   <variable name='flags' value='ADDLOCAL=ALL IEXPLORER=1 MOZILLA=1 REBOOT=Suppress' />
@@ -82,11 +82,11 @@
 <package
   id="java7"
   name="Java 7"
-  revision="%version%-3"
+  revision="%version%-0"
   reboot="false"
   priority="10">
 
-  <variable name="last" value="15" />        <!-- last part of the version - used for looping through installed versions -->
+  <variable name="last" value="17" />        <!-- last part of the version - used for looping through installed versions -->
   <variable name="short" value="7u%last%" /> <!-- part of the installer file name -->
   <variable name="version" value="1.7.0_%last%" />
   <variable name='flags' value='ADDLOCAL=ALL IEXPLORER=1 MOZILLA=1 REBOOT=Suppress' />
