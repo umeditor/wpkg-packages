@@ -93,6 +93,28 @@ NOTES
   <remove    cmd='msiexec %MSI% /x "%SOFTWARE%\Apple\Bonjour\%version%\%PROCESSOR_ARCHITECTURE%\bonjour.msi"' />
 </package>
 
+<package
+  id="icloud"
+  name="iCloud Control Panel"
+  revision="%version%-0"
+  reboot="false"
+  priority="10">
+
+  <depends package-id="applesupport" />
+  <depends package-id="bonjour" />
+
+  <variable name="version" value="2.1.1.3" />
+  <variable name="PKG_SOURCE" value="%SOFTWARE%\Apple\iCloud\%version%\iCloud.msi"   architecture="x86" />
+  <variable name="PKG_SOURCE" value="%SOFTWARE%\Apple\iCloud\%version%\iCloud64.msi" architecture="x64" />
+
+  <check type="uninstall" condition="versiongreaterorequal" path="iCloud" value="%version%"/>
+
+  <install   cmd='msiexec %MSI% /i "%PKG_SOURCE%"' />
+  <upgrade   include="install" />
+  <downgrade include="install" />
+  <remove    cmd='msiexec %MSI% /x "%PKG_SOURCE%"' />
+</package>
+
 <!-- TODO: check if the QuickTime Task job is also deleted on 64 bit windows -->
 
 <package
