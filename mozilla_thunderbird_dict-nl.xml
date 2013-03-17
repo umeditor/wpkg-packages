@@ -5,6 +5,6 @@
   <!ENTITY addon-id "nl-NL@dictionaries.addons.mozilla.org">
   <!ENTITY version "3.1.0">
   <!ENTITY url "https://addons.mozilla.org/thunderbird/downloads/file/147302/woordenboek_nederlands-3.1.0-sm+fn+fx+tb.xpi">
-  <!ENTITY pkg SYSTEM "../templates/mozilla_thunderbird_addon.xml">
+  <!ENTITY pkg SYSTEM "templates/mozilla_thunderbird_addon.xml">
 ]>
 <packages>&pkg;</packages>
