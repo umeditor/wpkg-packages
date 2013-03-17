@@ -5,7 +5,7 @@
   <!ENTITY addon-id "sogo-connector@inverse.ca">
   <!ENTITY version "10.0.3">
   <!ENTITY url "http://www.sogo.nu/files/downloads/extensions/sogo-connector-10.0.3.xpi">
-  <!ENTITY pkg SYSTEM "../templates/mozilla_thunderbird_addon.xml"
+  <!ENTITY pkg SYSTEM "templates/mozilla_thunderbird_addon.xml"
 >
 ]>
 <packages>&pkg;</packages>

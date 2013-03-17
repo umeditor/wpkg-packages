@@ -92,7 +92,7 @@
   </install>
 
   <upgrade   include='install' />
-  <downgrade include='install' /> 
+  <downgrade include='install' />
 
   <remove cmd='msiexec /X{D9A9DFC4-4F0C-414C-84FF-B5234BFF4797} %MSI%'>
     <exit code="3010" />
