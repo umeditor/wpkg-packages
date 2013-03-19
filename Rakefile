@@ -11,7 +11,12 @@ end
 
 desc "Check for valid XML and Ruby"
 task :check do
-  system "find . -name '*.xml' -print0 | xargs -0 xmllint --noout"
+  puts 'Checking XML recipes'
+  Dir.glob('*.xml') do |f|
+    # puts "Checking #{f}"
+    system "xmllint --noout '#{f}'"
+  end
+  puts 'Checking ruby scripts'
   system "find . -name '*.rb' -print0 | xargs -0 ruby -c"
 end
 
@@ -40,4 +45,4 @@ task :push do
   system 'git push'
 end
 
-task :default => [:clean, :permissions, :tidy, :check ]
+task default: [:clean, :permissions, :tidy, :check ]
