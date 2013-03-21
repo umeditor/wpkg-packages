@@ -17,8 +17,8 @@
 
 <package
   id="autodesk_dwgtrueview"
-  name="Autodesk DWG TrueView %version%"
-  revision="%version%-0"
+  name="Autodesk DWG TrueView"
+  revision="%version%-1"
   reboot="false"
   priority="10">
 
@@ -46,8 +46,8 @@
 
 <package
   id="autodesk_designreview"
-  name="Autodesk DWG TrueView %version%"
-  revision="%version%-0"
+  name="Autodesk Design Review"
+  revision="%version%-1"
   reboot="false"
   priority="10">
 
