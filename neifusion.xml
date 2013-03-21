@@ -13,7 +13,7 @@
 <package
   id="neifusion"
   name="NeiFusion 2.1 with SP3"
-  revision="%version%-0"
+  revision="%version%-1"
   reboot="false">
 
   <depends package-id="dotnet4" />
@@ -21,7 +21,7 @@
 
   <variable name="version" value="2.1" />
   <variable name="minorversion" value="3001" />
-  <variable name="PKG_SOURCE_DIR" value="%SOFTWARE%\NEiFusion\%version%" />
+  <variable name="PKG_SOURCE_DIR" value="%SOFTWARE%\NEiFusion\%version%\%PROCESSOR_ARCHITECTURE%" />
 
   <check type="uninstall" condition="versiongreaterorequal" path="NEiFusion" value="%version%.%minorversion%" />
 
