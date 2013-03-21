@@ -65,6 +65,12 @@ PACKAGES = {
   :package_id => 'console2' },
 ],
 
+dcsu: [
+  { url: 'http://downloads-us.dell.com/FOLDER00981149M/1/Sys-Man_Application_MJH8R_WN_1.3.0_A00.EXE',
+    destination: [ 'Dell', 'DCSU', 'Sys-Man_Application_MJH8R_WN_1.3.0_A00.exe' ],
+    package_id: 'dcsu' },
+],
+
 :dotnet3 => [
   {:url => 'http://download.microsoft.com/download/2/0/e/20e90413-712f-438c-988e-fdaa79a8ac3d/dotnetfx35.exe',
   :destination => ['Microsoft', 'DotNet', 'dotnetfx35.exe']},
