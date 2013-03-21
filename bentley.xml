@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  NOTES
+  1) You can get the prereqs by running the synchronizer installer manually
+-->
+
+<packages>
+
+<package
+  id="staadpro"
+  name="Bentley STAAD Pro 8"
+  revision="%version%-0"
+  reboot="false">
+
+  <depends package-id="dotnet4" />
+  <depends package-id="vcruntime" />
+
+  <variable name="version" value="20.07.09.20" />
+  <variable name="PKG_SOURCE_DIR_0" value="%SOFTWARE%\Bentley\PreRequisite" />
+  <variable name="PKG_SOURCE_DIR_1" value="%SOFTWARE%\Bentley\stpst20070920en" />
+  <variable name="PKG_SOURCE_DIR_2" value="%SOFTWARE%\Bentley\ssync081109130en" />
+
+  <check type="uninstall" condition="versiongreaterorequal" path="STAAD.Pro V8i SELECTseries 4" value="%version%" />
+  <check type="uninstall" condition="versiongreaterorequal" path="Bentley IEG License Service" value="2.0.20.1" />
+  <check type="uninstall" condition="versiongreaterorequal" path="Bentley SPC Server v8i SS2" value="8.11.9.28" />
+
+  <!-- PreReq -->
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_0%\DhtmlEd.msi" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_0%\VBAOF11.msi" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_0%\VBAOF11I.msi" %MSI%' />
+
+  <!-- STAAD Pro -->
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_1%\Bentley IEG License Service.msi" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_1%\OpenSTAADOEMSetup.08.02.09.16.msi" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_1%\STAAD.Pro V8i SELECTseries 4.msi" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_1%\STAAD.foundation V8i (SS4) 5.3.msi" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_1%\PipeLinkForStaadPro20110912.msi" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_1%\StrucLinkForStaadProSetup20121129.msi" %MSI%' />
+
+  <!-- Synchronizer -->
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_2%\DgnPreviewHandlerx86.msi" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_2%\DgnThumbnailProviderx86.msi" %MSI%' architecture="x86" />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_2%\DgnThumbnailProviderx64.msi" %MSI%' architecture="x64" />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_2%\SSCERuntime_x86-ENU.msi" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_2%\SSCERuntime_x64-ENU.msi" %MSI%' architecture="x64" />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_2%\SpcCatalog.msi" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_2%\SpcServer.msi" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_2%\IsmEngine.msi" %MSI%' />
+
+  <upgrade   include='install' />
+  <downgrade include='install' />
+
+</package>
+
+</packages>
