@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<packages>
+
+<!--
+  NOTES
+  1) You MUST set the environment variable ANSYS_LICENSE_SERVER (GP is the easiest)
+-->
+
+<package
+  id="ansys"
+  name="ANSYS 14"
+  revision="%version%-0"
+  reboot="false">
+
+  <depends package-id="dotnet4" />
+  <depends package-id="vcruntime" />
+
+  <variable name="version" value="14.0" />
+  <variable name="PKG_SOURCE_DIR" value="%SOFTWARE%\ANSYS\%version%\%PROCESSOR_ARCHITECTURE%" />
+  <variable name="PKG_DESTINATION_DIR" value="%PROGRAM_FILES%\ANSYS Inc\v140" />
+
+  <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION_DIR\Framework\bin\Win32\runwb2.exe" value="%version%" architecture="x86" />
+  <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION_DIR\Framework\bin\Win64\runwb2.exe" value="%version%" architecture="x64" />
+
+  <install cmd='"%PKG_SOURCE_DIR%\setup.exe" -silent -licserverinfo %ANSYS_LICENSE_SERVER%' />
+
+  <upgrade   include='install' />
+  <downgrade include='install' />
+
+  <remove cmd='"%PKG_DESTINATION_DIR%\uninstall.exe" -silent' />
+
+</package>
+
+<package
+  id="ansys_scdm"
+  name="ANSYS SpaceClaim"
+  revision="%version%-0"
+  reboot="false">
+
+  <depends package-id="dotnet4" />
+  <depends package-id="vcruntime" />
+
+  <variable name="version" value="7.1.0" />
+  <variable name="PKG_SOURCE" value="%SOFTWARE%\ANSYS\SCDM %version%\Installer.msi" />
+
+  <check type="uninstall" condition="versiongreaterorequal" path="ANSYS SCDM" value="%version%" />
+
+  <install cmd='msiexec /i "%PKG_SOURCE%" %MSI%' />
+
+  <upgrade   include='install' />
+  <downgrade include='install' />
+
+  <remove cmd='msiexec /x "%PKG_SOURCE%" %MSI%' />
+
+</package>
+
+</packages>
