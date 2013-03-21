@@ -9,16 +9,16 @@
 
 <package
   id="ansys"
-  name="ANSYS 14"
+  name="ANSYS 14.5"
   revision="%version%-0"
   reboot="false">
 
   <depends package-id="dotnet4" />
   <depends package-id="vcruntime" />
 
-  <variable name="version" value="14.0" />
+  <variable name="version" value="14.5" />
   <variable name="PKG_SOURCE_DIR" value="%SOFTWARE%\ANSYS\%version%\%PROCESSOR_ARCHITECTURE%" />
-  <variable name="PKG_DESTINATION_DIR" value="%PROGRAM_FILES%\ANSYS Inc\v140" />
+  <variable name="PKG_DESTINATION_DIR" value="%PROGRAM_FILES%\ANSYS Inc\v145" />
 
   <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION_DIR\Framework\bin\Win32\runwb2.exe" value="%version%" architecture="x86" />
   <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION_DIR\Framework\bin\Win64\runwb2.exe" value="%version%" architecture="x64" />
@@ -34,24 +34,28 @@
 
 <package
   id="ansys_scdm"
-  name="ANSYS SpaceClaim"
+  name="ANSYS SCDM and CATIA"
   revision="%version%-0"
   reboot="false">
 
   <depends package-id="dotnet4" />
   <depends package-id="vcruntime" />
 
-  <variable name="version" value="7.1.0" />
-  <variable name="PKG_SOURCE" value="%SOFTWARE%\ANSYS\SCDM %version%\Installer.msi" />
+  <variable name="version" value="8.0.0" />
+  <variable name="PKG_SOURCE_1" value="%SOFTWARE%\ANSYS\SCDM %version%\Installer.msi" />
+  <variable name="PKG_SOURCE_2" value="%SOFTWARE%\ANSYS\SCDM %version%\Catia64.msi" />
 
   <check type="uninstall" condition="versiongreaterorequal" path="ANSYS SCDM" value="%version%" />
+  <check type="uninstall" condition="versiongreaterorequal" path="SpaceClaim CATIA V5 Exchange" value="%version%" architecture="x64" />
 
-  <install cmd='msiexec /i "%PKG_SOURCE%" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_1%" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE_2%" %MSI%' architecture="x64" />
 
   <upgrade   include='install' />
   <downgrade include='install' />
 
-  <remove cmd='msiexec /x "%PKG_SOURCE%" %MSI%' />
+  <remove cmd='msiexec /x "%PKG_SOURCE_2%" %MSI%' architecture="x64" />
+  <remove cmd='msiexec /x "%PKG_SOURCE_1%" %MSI%' />
 
 </package>
 
