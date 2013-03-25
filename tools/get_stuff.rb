@@ -219,8 +219,9 @@ dcsu: [
 
 # 'http://download.skype.com/SkypeSetup.msi',
 :skype => [
-  {:url => 'http://download.skype.com/1cd64f2e45ea98868326f54397db45bf/SkypeSetup.msi',
-  :destination => ['Skype', 'SkypeSetup.msi']},
+  {:url => 'http://www.skype.com/go/getskype-msi',
+  :destination => ['Skype', '%version%', 'SkypeSetup.msi'],
+  :package_id => 'skype' },
 ],
 
 :sumatrapdf => [
