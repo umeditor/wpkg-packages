@@ -201,6 +201,15 @@ dcsu: [
   :unzip => true},
 ],
 
+:puretext => [
+  {:url => 'http://www.stevemiller.net/downloads/puretext_%version%_32-bit.zip',
+  :destination => ['PureText', 'puretext_%version%_32-bit.zip'],
+  :package_id => 'puretext'},
+  {:url => 'http://www.stevemiller.net/downloads/puretext_%version%_64-bit.zip',
+  :destination => ['PureText', 'puretext_%version%_64-bit.zip'],
+  :package_id => 'puretext'},
+],
+
 :rsat => [
   {:url => 'http://download.microsoft.com/download/4/F/7/4F71806A-1C56-4EF2-9B4F-9870C4CFD2EE/Windows6.1-KB958830-x86-RefreshPkg.msu',
   :destination => ['Microsoft', 'RSAT', 'Windows6.1-KB958830-x86-RefreshPkg.msu']},
