@@ -5,7 +5,7 @@
 <package
   id="puretext"
   name="PureText"
-  revision="%version%-0"
+  revision="%version%-1"
   reboot="false"
   priority="0">
 
@@ -14,7 +14,7 @@
   <variable name="version" value="3.0" />
   <variable name="PKG_SOURCE" value="%SOFTWARE%\PureText\puretext_%version%_32-bit.zip" architecture="x86" />
   <variable name="PKG_SOURCE" value="%SOFTWARE%\PureText\puretext_%version%_64-bit.zip" architecture="x64" />
-  <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\PureText"      />
+  <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\PureText" />
 
   <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION%\puretext.exe" value="%version%" />
 

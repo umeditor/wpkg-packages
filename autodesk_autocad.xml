@@ -105,7 +105,7 @@
 <package
   id="autodesk_autocad2010"
   name="AutoDesk AutoCAD 2010"
-  revision="%version%-0"
+  revision="%version%-1"
   priority="10"
   reboot="false">
 
@@ -115,9 +115,9 @@
   <variable name="version" value="14.0.0.0" />
   <variable name="language" value="en-us" lcid="0409,0809,4809" />
   <variable name="PKG_SOURCE" value="%SOFTWARE%\AutoDesk\AutoCAD\AutoCAD2010\%PROCESSOR_ARCHITECTURE%\AdminImage" />
-  <varibale name='GUID' value='086F9A69-CD39-4893-A9FB-D3A0634CE3F7' />
+  <varibale name='GUID' value='03CD7F85-80A7-4C9A-BB6A-BEF99AD2BAF7' />
 
-  <check type="uninstall" condition="versiongreaterorequal" path="AutoCAD.*2010 - .*" value="%version%" />
+  <check type="uninstall" condition="versiongreaterorequal" path="Auto.*2010.*" value="%version%" />
 
   <install cmd='"%PKG_SOURCE%\setup.exe" /qb /I %PKG_SOURCE%\custom.ini /language %language%'>
     <exit code="1641" />
