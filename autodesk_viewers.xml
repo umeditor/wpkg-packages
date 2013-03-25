@@ -18,7 +18,7 @@
 <package
   id="autodesk_dwgtrueview"
   name="Autodesk DWG TrueView"
-  revision="%version%-3"
+  revision="%version%-4"
   reboot="false"
   priority="10">
 
@@ -38,7 +38,7 @@
 
   <install cmd='%COMSPEC% /C IF EXIST "%TEMP_DIR%" RD /Q /S "%TEMP_DIR%"' />
   <install cmd='%COMSPEC% /C MKDIR "%TEMP_DIR%"' />
-  <install cmd='"%PROGRAMFILES%\7-Zip\7z.exe" x -y -o"%TEMP_DIR%\" "%PKG_SOURCE%"' />
+  <install cmd='"%PROGRAMFILES%\7-Zip\7z.exe" x -y -o"%TEMP_DIR%\" "%PKG_SOURCE%" >NUL' />
   <install cmd='"%TEMP_DIR%\setup.exe" /w /q /i "%TEMP_DIR%\setup.ini"'><exit code='3010' /></install>
   <install cmd='%COMSPEC% /c del /Q "%DESKTOP%\DWG TrueView*.lnk"'><exit code="any" /></install>
 
