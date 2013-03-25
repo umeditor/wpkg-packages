@@ -10,7 +10,7 @@
 <package
   id="ansys"
   name="ANSYS 14.5"
-  revision="%version%-1"
+  revision="%version%-2"
   reboot="false">
 
   <depends package-id="dotnet4" />
@@ -18,7 +18,7 @@
 
   <variable name="version" value="14.5" />
   <variable name="PKG_SOURCE_DIR" value="%SOFTWARE%\ANSYS\%version%\%PROCESSOR_ARCHITECTURE%" />
-  <variable name="PKG_DESTINATION_DIR" value="%PROGRAM_FILES%\ANSYS Inc\v145" />
+  <variable name="PKG_DESTINATION_DIR" value="%PROGRAMFILES%\ANSYS Inc\v145" />
 
   <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION_DIR%\Framework\bin\Win32\runwb2.exe" value="%version%" architecture="x86" />
   <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION_DIR%\Framework\bin\Win64\runwb2.exe" value="%version%" architecture="x64" />
