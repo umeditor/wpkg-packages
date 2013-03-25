@@ -18,29 +18,34 @@
 <package
   id="autodesk_dwgtrueview"
   name="Autodesk DWG TrueView"
-  revision="%version%-1"
+  revision="%version%-2"
   reboot="false"
   priority="10">
 
+  <depends package-id="7zip" />
   <depends package-id="dotnet4" /> <!-- Requires .NET 4 -->
   <depends package-id="msxml" /> <!-- MSXML 6 is bundled -->
   <depends package-id="vcruntime" /> <!-- VCruntime 2008 is bundled -->
 
   <variable name="version" value="2013" />
-  <variable name="PKG_SOURCE" value="%SOFTWARE%\Autodesk\DWGTrueView\%version%\%PROCESSOR_ARCHITECTURE%\x86\dwgviewr\dwgviewr.msi" architecture="x86" />
-  <variable name="PKG_SOURCE" value="%SOFTWARE%\Autodesk\DWGTrueView\%version%\%PROCESSOR_ARCHITECTURE%\x64\dwgviewr\dwgviewr.msi" architecture="x64" />
+  <variable name="PKG_SOURCE" value="%SOFTWARE%\Autodesk\SetupDWGTrueView%version%_32bit.exe" architecture="x86" />
+  <variable name="PKG_SOURCE" value="%SOFTWARE%\Autodesk\SetupDWGTrueView%version%_64bit.exe" architecture="x64" />
+  <variable name="TEMP_DIR" value="%TEMP%\dwgtrueview%version%" />
   <variable name="DESKTOP" value="%ALLUSERSPROFILE%\Desktop" os="windows xp" />
   <variable name="DESKTOP" value="%PUBLIC%\Desktop"          os="windows 7" />
 
   <check type="uninstall" condition="exists" path="DWG TrueView %version%" />
 
-  <install cmd='"%SOFTWARE%\Autodesk\DWGTrueView\%version%\%PROCESSOR_ARCHITECTURE%\setup.exe" /w /q /i setup.ini '><exit code='3010' /></install>
+  <install cmd='%COMSPEC% /C IF EXIST "%TEMP_DIR%" RD /Q /S "%TEMP_DIR%"' />
+  <install cmd='%COMSPEC% /C MKDIR "%TEMP_DIR%"' />
+  <install cmd='"%PROGRAMFILES%\7-Zip\7z.exe" x -y -o"%TEMP_DIR%\"' />
+  <install cmd='"%TEMP_DIR%\setup.exe" /w /q /i "%TEMP_DIR%\setup.ini"'><exit code='3010' /></install>
   <install cmd='%COMSPEC% /c del /Q "%DESKTOP%\DWG TrueView*.lnk"'><exit code="any" /></install>
 
   <upgrade   include='install' />
   <downgrade include='install' />
 
-  <remove cmd='msiexec /x "%PKG_SOURCE%" %MSI%'><exit code='3010' /></remove>
+  <remove cmd='%PROGRAMFILES%\Autodesk\DWG TrueView %version%\Setup\Setup.exe /P {5783F2D7-B028-0409-0000-0060B0CE6BBA} /M AOEM /language en-US'><exit code='3010' /></remove>
 
 </package>
 
