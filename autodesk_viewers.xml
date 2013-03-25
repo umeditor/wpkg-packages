@@ -45,7 +45,7 @@
   <upgrade   include='install' />
   <downgrade include='install' />
 
-  <remove cmd='%PROGRAMFILES%\Autodesk\DWG TrueView %version%\Setup\Setup.exe /P {5783F2D7-B028-0409-0000-0060B0CE6BBA} /M AOEM /language en-US'><exit code='3010' /></remove>
+  <remove cmd='%PROGRAMFILES%\Autodesk\DWG TrueView %version%\Setup\Setup.exe /q /P {5783F2D7-B028-0409-0000-0060B0CE6BBA} /M AOEM /language en-US'><exit code='3010' /></remove>
 
 </package>
 
