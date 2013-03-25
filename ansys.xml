@@ -10,7 +10,7 @@
 <package
   id="ansys"
   name="ANSYS 14.5"
-  revision="%version%-0"
+  revision="%version%-1"
   reboot="false">
 
   <depends package-id="dotnet4" />
@@ -20,8 +20,8 @@
   <variable name="PKG_SOURCE_DIR" value="%SOFTWARE%\ANSYS\%version%\%PROCESSOR_ARCHITECTURE%" />
   <variable name="PKG_DESTINATION_DIR" value="%PROGRAM_FILES%\ANSYS Inc\v145" />
 
-  <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION_DIR\Framework\bin\Win32\runwb2.exe" value="%version%" architecture="x86" />
-  <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION_DIR\Framework\bin\Win64\runwb2.exe" value="%version%" architecture="x64" />
+  <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION_DIR%\Framework\bin\Win32\runwb2.exe" value="%version%" architecture="x86" />
+  <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION_DIR%\Framework\bin\Win64\runwb2.exe" value="%version%" architecture="x64" />
 
   <install cmd='"%PKG_SOURCE_DIR%\setup.exe" -silent -licserverinfo %ANSYS_LICENSE_SERVER%' />
 
