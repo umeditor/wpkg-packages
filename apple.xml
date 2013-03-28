@@ -12,13 +12,16 @@ NOTES
 <package
   id="itunes"
   name="Apple iTunes"
-  revision="%version%-0"
+  revision="%version%-1"
   reboot="false"
   priority="10">
 
   <depends package-id="applesupport" />
   <depends package-id="applemobile" />
+  <!--
+       No longer necessary
   <depends package-id="quicktime" />
+  -->
 
   <variable name="version" value="11.0.2.26" />
   <variable name="PKG_SOURCE" value="%SOFTWARE%\Apple\iTunes\%version%\iTunes.msi"   architecture="x86" />
