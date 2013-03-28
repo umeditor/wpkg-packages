@@ -14,9 +14,9 @@
 <package
   id="netextender"
   name="SonicWALL SSL-VPN NetExtender"
-  revision="%version%-3"
+  revision="%version%-4"
   reboot="false"
-  priority="10">
+  priority="1"> <!-- run it late to enable updates via VPN -->
 
   <variable name="version" value="6.0.181" />
   <variable name="fileversion" value="%version%.1" />
