@@ -5,7 +5,7 @@
 <package
   id="puretext"
   name="PureText"
-  revision="%version%-1"
+  revision="%version%-2"
   reboot="false"
   priority="0">
 
@@ -18,7 +18,7 @@
 
   <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION%\puretext.exe" value="%version%" />
 
-  <install   cmd='"%PROGRAMFILES%\7-Zip\7z.exe" e -y -o"%PKG_DESTINATION%\" "%PKG_SOURCE%" >NUL' />
+  <install   cmd='%COMSPEC% /C "start "Unpacking" /wait "%PROGRAMFILES%\7-Zip\7z.exe" e -y -o"%PKG_DESTINATION%\" "%PKG_SOURCE%" >%TEMP%\wpkg_unpack_puretext.log"' />
   <upgrade   include='install' />
   <downgrade include='install' />
   <remove    cmd='%COMSPEC% /C RD /Q /S "%PKG_DESTINATION%"' />
