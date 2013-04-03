@@ -53,19 +53,23 @@
 <!--
   NOTES
   1) Registry needs to be updated for the user running it, so add the following to the logon script instead: regedit /s "%PROGRAMFILES%\Yahoo!\Messenger\default.reg" and "intl.reg"
+  2) Installing
+    a) Download web installer
+    b) Run it
+    c) Dig out ymsgr_inst.exe from one of the TEMP paths
 
  -->
 
 <package
   id="yahoomessenger"
   name="Yahoo Messenger"
-  revision="%version%-4"
+  revision="%version%-0"
   reboot="false"
   priority="10">
 
   <depends package-id='vcruntime' />
 
-  <variable name="version" value="11.0.0.1270" />
+  <variable name="version" value="11.5.0.0" />
   <variable name='PKG_DESTINATION' value='%PROGRAMFILES%\Yahoo!\Messenger'      architecture="x86" />
   <variable name='PKG_DESTINATION' value='%PROGRAMFILES(x86)%\Yahoo!\Messenger' architecture="x64" />
 
