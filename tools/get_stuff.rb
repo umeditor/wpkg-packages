@@ -119,10 +119,10 @@ dcsu: [
 
 :gs => [
   {:url => 'http://downloads.sourceforge.net/project/ghostscript/GPL%20Ghostscript/%version%/gs%fileversion%w32.exe',
-  :destination => ['GhostScript', BIT_32_DIR, 'gs%fileversion%.exe'],
+  :destination => ['GhostScript', 'gs%fileversion%w32.exe'],
   :package_id => 'ghostscript' },
   {:url => 'http://downloads.sourceforge.net/project/ghostscript/GPL%20Ghostscript/%version%/gs%fileversion%w64.exe',
-  :destination => ['GhostScript', BIT_64_DIR, 'gs%fileversion%.exe'],
+  :destination => ['GhostScript', 'gs%fileversion%w64.exe'],
   :package_id => 'ghostscript' },
 ],
 
