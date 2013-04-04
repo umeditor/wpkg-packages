@@ -1,0 +1,8 @@
+<package
+  id='&service;-disable'
+  name='Disable &service;'
+  execute="once">
+
+  <install cmd='net stop &service;' />
+  <install cmd='sc config &service; start= disabled' />
+</package>
