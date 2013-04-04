@@ -59,7 +59,7 @@
 <package
   id="dotnet4"
   name="Microsoft .NET 4"
-  revision="5"
+  revision="6"
   reboot="false"
   priority="50">
 
@@ -76,7 +76,7 @@
   <check type="uninstall" condition="exists" path="Microsoft .NET Framework 4 Extended" />
 
   <install cmd='%COMSPEC% /c IF NOT EXIST "%PKG_TARGET%" mkdir "%PKG_TARGET%"' />
-  <install cmd='%COMSPEC% /C "start "Unpacking" /wait "%PKG_SOURCE%" /x:"%PKG_TARGET%\" "%PKG_SOURCE%" >%TEMP%\wpkg_unpack_dotnet4.log"' />
+  <install cmd='%COMSPEC% /C "start "Unpacking" /wait "%PKG_SOURCE%" /q /x:"%PKG_TARGET%""' />
   <install cmd='msiexec %MSI% /i "%PKG_SOURCE_1%" /quiet /norestart EXTUI=1' timeout="900">
     <exit code="1614" reboot="false" />
     <exit code="3010" reboot="false" />
