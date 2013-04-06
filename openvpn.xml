@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  NOTES
+  1) Make sure to extract the certificate. Guide here: http://wpkg.org/OpenVPN
+     And then get it from tap-windows.exe in the archive.
+-->
+
+<packages>
+
+<package
+  id="openvpn"
+  name="OpenVPN Client"
+  revision="%version%-0"
+  reboot="false"
+  priority="1"> <!-- run it late to enable updates via VPN -->
+
+  <variable name="version" value="2.3.1-I001" />
+
+  <variable name="PKG_SOURCE_DIR"  value="%SOFTWARE%\OpenVPN\%version%" />
+  <variable name="PKG_SOURCE"      value="%PKG_SOURCE_DIR%\openvpn-install-%version%-i686.exe"   architecture="x86" />
+  <variable name="PKG_SOURCE"      value="%PKG_SOURCE_DIR%\openvpn-install-%version%-x86_64.exe" architecture="x64" />
+  <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\OpenVPN" />
+  <variable name="CERTIFICATE"     value="%PKG_SOURCE_DIR%\OpenVPN_Certificate.cer" />
+
+  <check type="uninstall" condition="versiongreaterorequal" path="OpenVPN" value="%version%" />
+
+  <install include='kill' />
+  <install cmd='certutil -addstore "TrustedPublisher" "%CERTIFICATE%" >NUL' />
+  <install cmd='"%PKG_SOURCE%" /S'><exit code="3010" /></install>
+  <install cmd='%COMSPEC% /c xcopy /Y "%PKG_SOURCE%" c:\ >NUL'><exit code="any" /></install>
+
+  <upgrade   include='install' />
+  <downgrade include='install' />
+
+  <remove cmd='"%PKG_DESTINATION%\uninstall.exe" /S' />
+
+  <commands>
+    <command type='kill' cmd='taskkill /f /im openvpn-gui.exe'>
+      <exit code='any' />
+    </command>
+    <command type='kill' cmd='sc stop OpenVPNService'>
+      <exit code='any' />
+    </command>
+  </commands>
+
+</package>
+
+</packages>
