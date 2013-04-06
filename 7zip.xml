@@ -4,15 +4,16 @@
   <package
     id="7zip"
     name="7-Zip (32 and 64 bit) - patched to support opening images"
-    revision="%version%-6"
+    revision="%version%-7"
     reboot="false"
     priority="0">
 
     <variable name="version" value="9.22" />
     <variable name="fileversion" value="922" />
-    <variable name="PKG_SOURCE" value="%SOFTWARE%\7zip\%PROCESSOR_ARCHITECTURE%" />
+    <variable name="PKG_SOURCE" value="%SOFTWARE%\7zip\7z%fileversion%.msi"     architecture="x86" />
+    <variable name="PKG_SOURCE" value="%SOFTWARE%\7zip\7z%fileversion%-x64.msi" architecture="x64" />
     <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\7-Zip" />
-    <variable name="patched_exe" value="%PKG_SOURCE%\7zFM_%fileversion%.exe" />
+    <variable name="patched_exe" value="%SOFTWARE%\7zip\%PROCESSOR_ARCHITECTURE%\7zFM_%fileversion%.exe" />
 
     <check type="logical" condition="or">
       <check type="uninstall" condition="exists" path="7-Zip %version%"/>
