@@ -15,30 +15,35 @@
   reboot="false"
   priority="10">
 
+  <variable name="PKG_SOURCE"      value="%SOFTWARE%\SparkIM\spark_2_5_8_online.msi" />
+  <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\Spark"      architecture="x86" />
+  <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\Spark" architecture="x64" />
+
   <check type="uninstall" condition="versiongreaterorequal" path="Spark" value="2.5.8" />
 
   <install cmd='taskkill /f /im spark.exe'><exit code="any" /></install>
-  <install cmd='msiexec /i "%SOFTWARE%\SparkIM\spark_2_5_8_online.msi" %MSI%' />
+  <install cmd='msiexec /i "%PKG_SOURCE%" %MSI%' />
   <install cmd='%COMSPEC% /c DEL /Q "%ALLUSERSPROFILE%\Desktop\Spark*.lnk"'><exit code="any" /></install>
   <install cmd='%COMSPEC% /c DEL /Q "%PUBLIC%\Desktop\Spark*.lnk"'><exit code="any" /></install>
   <!-- Spark must run once as admin before it works -->
-  <install cmd='%COMSPEC% /c IF EXIST "%PROGRAMFILES%\Spark\Spark.exe" start "%PROGRAMFILES%\Spark\Spark.exe"' />
-  <install cmd='%COMSPEC% /c IF EXIST "%PROGRAMFILES(x86)%\Spark\Spark.exe" start "%PROGRAMFILES(x86)%\Spark\Spark.exe"' />
+  <install cmd='%COMSPEC% /c start "%PKG_DESTINATION%\Spark.exe"' />
   <install cmd="ping -n31 localhost >NUL"><exit code="any" /></install>
-  <install cmd='taskkill /f /im spark.exe'><exit code="any" /></install>
+  <install include='kill' />
+  <upgrade include='cleanup' />
 
-  <upgrade cmd='taskkill /f /im spark.exe'><exit code="any" /></upgrade>
-  <upgrade cmd='msiexec /i "%SOFTWARE%\SparkIM\spark_2_5_8_online.msi" %MSI%' />
-  <upgrade cmd='%COMSPEC% /c DEL /Q "%ALLUSERSPROFILE%\Desktop\Spark*.lnk"'><exit code="any" /></upgrade>
-  <upgrade cmd='%COMSPEC% /c DEL /Q "%PUBLIC%\Desktop\Spark*.lnk"'><exit code="any" /></upgrade>
+  <upgrade include='kill' />
+  <upgrade cmd='msiexec /i "%PKG_SOURCE%" %MSI%' />
+  <upgrade include='cleanup' />
 
-  <downgrade cmd='taskkill /f /im spark.exe'><exit code="any" /></downgrade>
-  <downgrade cmd='msiexec /i "%SOFTWARE%\SparkIM\spark_2_5_8_online.msi" %MSI%' />
-  <downgrade cmd='%COMSPEC% /c DEL /Q "%ALLUSERSPROFILE%\Desktop\Spark*.lnk"'><exit code="any" /></downgrade>
-  <downgrade cmd='%COMSPEC% /c DEL /Q "%PUBLIC%\Desktop\Spark*.lnk"'><exit code="any" /></downgrade>
+  <downgrade include='upgrade' />
 
-  <remove  cmd='msiexec /x "%SOFTWARE%\SparkIM\spark_2_5_8_online.msi" %MSI%' />
+  <remove cmd='msiexec /x "%PKG_SOURCE%" %MSI%' />
+
+  <commands>
+    <command type='kill' cmd='taskkill /f /im spark.exe'><exit code="any" /></command>
+    <command type='cleanup' cmd='%COMSPEC% /c DEL /Q "%ALLUSERSPROFILE%\Desktop\Spark*.lnk"'><exit code="any" /></command>
+    <command type='cleanup' cmd='%COMSPEC% /c DEL /Q "%PUBLIC%\Desktop\Spark*.lnk"'><exit code="any" /></command>
+  </commands>
 
 </package>
-
 </packages>
