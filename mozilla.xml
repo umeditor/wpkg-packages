@@ -20,23 +20,41 @@
   priority="10">
 
   <variable name="version" value="20.0" />
+  <variable name="PKG_SOURCE_DIR"  value="%SOFTWARE%\Mozilla\Firefox" />
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\Mozilla Firefox"      architecture="x86" />
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\Mozilla Firefox" architecture="x64" />
 
   <check type="uninstall" condition="exists" path="Mozilla Firefox %version% (.*)" />
 
-  <install   include='kill' />
-  <install   cmd='"%SOFTWARE%\Mozilla\Firefox\Firefox Setup %version%.exe" /S /INI="%SOFTWARE%\Mozilla\Firefox\installer.ini"' />
+  <install include='kill' />
+  <install cmd='"%PKG_SOURCE_DIR%\Firefox Setup %version%.exe" /S /INI="%PKG_SOURCE_DIR%\installer.ini"' />
 
   <upgrade   include='install' />
   <downgrade include='install' />
 
-  <remove    include='kill' />
-  <remove    cmd='"%PKG_DESTINATION%\uninstall\helper.exe" /S' />
+  <remove include='kill' />
+  <remove cmd='"%PKG_DESTINATION%\uninstall\helper.exe" /S' />
 
   <commands>
     <command type='kill' cmd='taskkill.exe /f /im firefox.exe'><exit code="any" /></command>
   </commands>
+
+</package>
+
+<package
+  id="firefox_policy"
+  name="Mozilla Firefox Policy"
+  revision="1"
+  reboot="false"
+  execute='always'
+  priority="10">
+
+  <variable name="PKG_SOURCE_DIR"  value="%SOFTWARE%\Mozilla\Firefox" />
+  <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\Mozilla Firefox"      architecture="x86" />
+  <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\Mozilla Firefox" architecture="x64" />
+
+  <install cmd='copy /y "%PKG_SOURCE_DIR%\mozilla.cfg" "%PKG_DESTINATION%" >NUL'><exit code='1' /></install>
+  <install cmd='copy /y "%PKG_SOURCE_DIR%\local-settings.js" "%PKG_DESTINATION%\defaults\prefs" >NUL'><exit code='1' /></install>
 
 </package>
 
