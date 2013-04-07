@@ -44,7 +44,7 @@
 <package
   id="firefox_policy"
   name="Mozilla Firefox Policy"
-  revision="1"
+  revision="4"
   reboot="false"
   execute='always'
   priority="10">
@@ -53,8 +53,8 @@
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\Mozilla Firefox"      architecture="x86" />
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\Mozilla Firefox" architecture="x64" />
 
-  <install cmd='copy /y "%PKG_SOURCE_DIR%\mozilla.cfg" "%PKG_DESTINATION%" >NUL'><exit code='1' /></install>
-  <install cmd='copy /y "%PKG_SOURCE_DIR%\local-settings.js" "%PKG_DESTINATION%\defaults\prefs" >NUL'><exit code='1' /></install>
+  <install cmd='%COMSPEC% /C xcopy /y "%PKG_SOURCE_DIR%\mozilla.cfg" "%PKG_DESTINATION%" >NUL'><exit code='1' /></install>
+  <install cmd='%COMSPEC% /C xcopy /y "%PKG_SOURCE_DIR%\local-settings.js" "%PKG_DESTINATION%\defaults\pref" >NUL'><exit code='1' /></install>
 
 </package>
 
