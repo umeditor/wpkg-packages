@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<packages>
+
+<package
+  id="doublecmd"
+  name="Double Commander"
+  revision="%version%-0"
+  reboot="false"
+  priority="10">
+
+  <variable name='version' value='0.5.4' />
+
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\Double Commander\doublecmd-%version%.i386-win32.exe'   architecture='x86' />
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\Double Commander\doublecmd-%version%.x86_64-win64.exe' architecture='x64' />
+  <variable name='PKG_DESTINATION' value='%PROGRAMFILES%\Double Commander' />
+
+  <check type='logical' condition='or'>
+    <check type="uninstall" condition="exists" path="Double Commander %version%" />
+    <check type="uninstall" condition="exists" path="Double Commander %version% beta" />
+  </check>
+
+  <install cmd='"%PKG_SOURCE%" /SP- /VERYSILENT /NORESTART' />
+
+  <upgrade   include='kill' />
+  <upgrade   include='install' />
+
+  <downgrade include='upgrade' />
+
+  <remove include='kill' />
+  <remove cmd='"%PKG_DESTINATION%\unins000.exe" /VERYSILENT /NORESTART' />
+
+  <commands>
+    <command type='kill' cmd='taskkill /f /im doublecmd.exe'><exit code='any' /></command>
+  </commands>
+
+</package>
+
+</packages>
