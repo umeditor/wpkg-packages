@@ -13,7 +13,7 @@
 <package
   id="neifusion"
   name="NeiFusion 2.1 with SP3"
-  revision="%version%-1"
+  revision="%version%-2"
   reboot="false">
 
   <depends package-id="dotnet4" />
@@ -21,11 +21,16 @@
 
   <variable name="version" value="2.1" />
   <variable name="minorversion" value="3001" />
-  <variable name="PKG_SOURCE_DIR" value="%SOFTWARE%\NEiFusion\%version%\%PROCESSOR_ARCHITECTURE%" />
+  <variable name="PKG_SOURCE_DIR_COMMON" value="%SOFTWARE%\NEiFusion\%version%" />
+  <variable name="PKG_SOURCE_DIR" value="%PKG_SOURCE_DIR_COMMON%\%PROCESSOR_ARCHITECTURE%" />
 
   <check type="uninstall" condition="versiongreaterorequal" path="NEiFusion" value="%version%.%minorversion%" />
 
-  <install cmd='msiexec /i "%PKG_SOURCE_DIR%\vsta_aide.msi" %MSI%' />
+  <!-- prereqs -->
+  <install cmd='msiexec /i "%PKG_SOURCE_DIR_COMMON%\vsta_aide.msi" %MSI%' />
+  <install cmd='"%PKG_SOURCE_DIR_COMMON%\vcredist_x86.exe" /Q /R:N'><exit code="3010" /></install>
+
+  <!-- actual program -->
   <install cmd='msiexec /i "%PKG_SOURCE_DIR%\NEi Nastran Engine.msi" %MSI%' />
   <install cmd='msiexec /p "%PKG_SOURCE_DIR%\NEi Fusion 2.1.3.1 Patch x64.msp" %MSI%' architecture="x64" />
 
