@@ -11,13 +11,13 @@
 <package
   id="ghostscript"
   name="GhostScript"
-  revision="%version%-1"
+  revision="%version%-2"
   reboot="false">
 
   <variable name="version" value="9.07" />
   <variable name="fileversion" value="907" />
-  <variable name="first" value="900" />
-  <variable name="prev" value="906" /> <!-- latest - 1 -->
+  <variable name="first" value="0" />
+  <variable name="prev" value="6" /> <!-- latest - 1 -->
 
   <check type="uninstall" condition="versiongreaterorequal" path="GPL Ghostscript" value="%version%" />
 
@@ -33,8 +33,8 @@
   <remove cmd='"%PROGRAMFILES(x86)%\gs\gs%version%\uninstgs.exe" /S' architecture="x64" />
 
   <commands>
-    <command type='uninstall' cmd='%COMSPEC% /C FOR /L %I IN (%first%,1,%prev%) DO "%PROGRAMFILES%\gs\gs%I\uninstgs.exe" /S'><exit code='any' /></command>
-    <command type='uninstall' cmd='%COMSPEC% /C FOR /L %I IN (%first%,1,%prev%) DO "%PROGRAMFILES(x86)%\gs\gs%I\uninstgs.exe" /S'><exit code='any' /></command>
+    <command type='uninstall' cmd='%COMSPEC% /C FOR /L %I IN (%first%,1,%prev%) DO "%PROGRAMFILES%\gs\gs9.0%I\uninstgs.exe" /S'><exit code='any' /></command>
+    <command type='uninstall' cmd='%COMSPEC% /C FOR /L %I IN (%first%,1,%prev%) DO "%PROGRAMFILES(x86)%\gs\gs9.0%I\uninstgs.exe" /S'><exit code='any' /></command>
   </commands>
 
 </package>
