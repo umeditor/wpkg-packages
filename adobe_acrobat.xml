@@ -9,8 +9,8 @@
   reboot="false"
   priority="10">
 
-  <variable name="version"     value="10.1.3" />
-  <variable name="fileversion" value="1013" />
+  <variable name="version"     value="10.1.6" />
+  <variable name="fileversion" value="1016" />
   <variable name="language"    value="en_US" lcid="0409,0809,4809" />
 
   <check type="uninstall" condition="versiongreaterorequal" path="Adobe Acrobat X Standard.*" value="%version%" />
