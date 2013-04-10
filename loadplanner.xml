@@ -37,10 +37,10 @@
   reboot="false"
   priority="10">
 
-  <variable name="version" value="4.1.06" />
-  <variable name="fileversion1" value="4.1.0.6" />
-  <variable name="fileversion2" value="4.01.0006" />
-  <variable name="updatefile" value="LoadPlanner 4106 update.msi" />
+  <variable name="version" value="4.1.08" />
+  <variable name="fileversion1" value="4.1.0.8" />
+  <variable name="fileversion2" value="4.01.0008" />
+  <variable name="updatefile" value="LoadPlanner 4108 update.msi" />
 
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\LoadPlanner"      architecture="x86" />
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\LoadPlanner" architecture="x64" />
