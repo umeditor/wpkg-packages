@@ -14,7 +14,7 @@
 <package
   id="netextender"
   name="SonicWALL SSL-VPN NetExtender"
-  revision="%version%-4"
+  revision="%version%-5"
   reboot="false"
   priority="1"> <!-- run it late to enable updates via VPN -->
 
@@ -39,6 +39,7 @@
   <!-- Version 4 -->
   <install cmd='msiexec /x "%PKG_SOURCE_DIR%\NetExtender.4.0.138.msi" %MSI%'><exit code='any' /></install>
   <install cmd='%COMSPEC% /C IF EXIST "%CERTIFICATE%" certutil -addstore "TrustedPublisher" "%CERTIFICATE%" >NUL' />
+  <install cmd='msiexec /x "%PKG_SOURCE_DIR%\NetExtender.%version%.msi" %MSI%'><exit code="3010" /></install>
   <install cmd='msiexec /i "%PKG_SOURCE_DIR%\NetExtender.%version%.msi" %MSI%'><exit code="3010" /></install>
   <install cmd='%COMSPEC% /c IF EXIST "%PKG_SOURCE_DIR%\NetExtender.reg" regedit /s "%PKG_SOURCE_DIR%\NetExtender.reg" '/>
   <install cmd='%COMSPEC% /c xcopy /Y "%PKG_SOURCE_DIR%\NetExtender.%version%.msi" c:\ >NUL'><exit code="any" /></install>
@@ -47,15 +48,13 @@
   <upgrade   include='install' />
   <downgrade include='install' />
 
-  <remove    cmd='msiexec /x "%PKG_SOURCE_DIR%\NetExtender.%version%.msi" %MSI%' />
+  <remove include='kill' />
+  <remove cmd='msiexec /x "%PKG_SOURCE_DIR%\NetExtender.%version%.msi" %MSI%' />
 
   <commands>
-    <command type='kill' cmd='taskkill /f /im negui.exe'>
-      <exit code='any' />
-    </command>
-    <command type='kill' cmd='sc stop SONICWALL_NetExtender'>
-      <exit code='any' />
-    </command>
+    <command type='kill' cmd='taskkill /f /im negui.exe'><exit code='any' /></command>
+    <command type='kill' cmd='net stop SONICWALL_NetExtender'><exit code='any' /></command>
+    <command type='kill' cmd='sc delete SONICWALL_NetExtender'><exit code='any' /></command>
   </commands>
 
 </package>
