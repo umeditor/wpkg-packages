@@ -17,8 +17,8 @@
   priority="10">
 
   <variable name="mainversion" value="11" />
-  <variable name="shortversion" value="%mainversion%.6" />
-  <variable name="version" value="%shortversion%.602.180" />
+  <variable name="shortversion" value="%mainversion%.7" />
+  <variable name="version" value="%shortversion%.700.169" />
   <variable name='CFG_DESTINATION_32' value='%WINDIR%\system32\Macromed\Flash' />
   <variable name='CFG_DESTINATION_64' value='%WINDIR%\SysWOW64' />
 
