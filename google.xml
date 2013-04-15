@@ -63,7 +63,7 @@
 <package
   id="googletalk"
   name="Google Talk"
-  revision="%version%-0"
+  revision="%version%-1"
   priority="10"
   reboot="false">
 
@@ -83,7 +83,7 @@
   <downgrade include='upgrade' />
 
   <remove include='kill' />
-  <remove cmd='"%PKG_DESTINATION%\uninstall.exe" /S' />
+  <remove cmd='"%PKG_DESTINATION%\uninstall.exe" /S'><exit code='any' /></remove>
 
   <commands>
     <command type='kill' cmd='taskkill /f /IM googletalk.exe'><exit code="any" /></command>
