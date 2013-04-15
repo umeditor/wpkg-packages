@@ -37,17 +37,20 @@
   reboot="false"
   priority="10">
 
-  <variable name="version" value="4.0.8" />
-  <variable name="fileversion" value="4.0.0.8" /> <!-- don't ask why - I don't know... -->
-  <variable name="updatefile" value="LoadPlanner 4008 update.msi" />  <!-- for .10 it should be 38100 -->
+  <variable name="version" value="4.1.08" />
+  <variable name="fileversion1" value="4.1.0.8" />
+  <variable name="fileversion2" value="4.01.0008" />
+  <variable name="updatefile" value="LoadPlanner 4108 update.msi" />
+
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\LoadPlanner"      architecture="x86" />
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\LoadPlanner" architecture="x64" />
   <variable name="DESKTOP" value="%ALLUSERSPROFILE%\Desktop" os="windows xp" />
   <variable name="DESKTOP" value="%PUBLIC%\Desktop"          os="windows 7" />
 
   <check type="logical" condition="or">
-    <check type="uninstall" condition="versiongreaterorequal" path="LoadPlanner %version% Update" value='%fileversion%' />
-    <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION%\LpMultiP.exe" value="%fileversion%" />
+    <check type="uninstall" condition="exists" path="LoadPlanner %version% Update" />
+    <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION%\LpMultiP.exe" value="%fileversion1%" />
+    <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION%\LpMultiP.exe" value="%fileversion2%" />
   </check>
 
   <install cmd='msiexec %MSI% /i "%SOFTWARE%\LoadPlanner\LoadPlanner.msi"' />
