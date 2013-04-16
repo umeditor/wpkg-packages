@@ -11,7 +11,7 @@
 <package
   id="spark"
   name="Spark IM"
-  revision="%version%-9"
+  revision="%version%-10"
   reboot="false"
   priority="10">
 
@@ -21,7 +21,7 @@
 
   <check type="uninstall" condition="versiongreaterorequal" path="Spark" value="2.5.8" />
 
-  <install cmd='taskkill /f /im spark.exe'><exit code="any" /></install>
+  <install include='kill' />
   <install cmd='msiexec /i "%PKG_SOURCE%" %MSI%' />
   <install cmd='%COMSPEC% /c DEL /Q "%ALLUSERSPROFILE%\Desktop\Spark*.lnk"'><exit code="any" /></install>
   <install cmd='%COMSPEC% /c DEL /Q "%PUBLIC%\Desktop\Spark*.lnk"'><exit code="any" /></install>
@@ -37,7 +37,7 @@
 
   <downgrade include='upgrade' />
 
-  <remove cmd='msiexec /x "%PKG_SOURCE%" %MSI%' />
+  <remove cmd='msiexec /x "%PKG_SOURCE%" %MSI%'><exit code='any' /></remove>
 
   <commands>
     <command type='kill' cmd='taskkill /f /im spark.exe'><exit code="any" /></command>
