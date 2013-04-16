@@ -110,6 +110,26 @@ ERROR_INVALID_COMMAND_
  LINE                    1639   Invalid command line argument. Consult the
                                 Windows Installer SDK for detailed command
                                 line help.
+ERROR_INSTALL_REMOTE_
+  DISALLOWED             1640   Installation from a Terminal Server
+                                client session not permitted for
+                                current user.
+ERROR_SUCCESS_REBOOT_
+  INITIATED              1641   The installer has started a reboot.
+                                This error code not available
+                                on Windows Installer version 1.0.
+ERROR_PATCH_TARGET_
+  NOT_FOUND              1642   The installer cannot install the
+                                upgrade patch because the program
+                                being upgraded may be missing, or the
+                                upgrade patch updates a different
+                                version of the program. Verify that
+                                the program to be upgraded exists on
+                                your computer and that you have the
+                                correct upgrade patch.
+
+                                This error code is not available on
+                                Windows Installer version 1.0.
 ERROR_SUCCESS_REBOOT_
  REQUIRED                3010   A restart is required to complete the
                                 install. This does not include installs
