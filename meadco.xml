@@ -10,13 +10,13 @@
 <package
   id="meadco_scriptx"
   name="MeadCo ScriptX"
-  revision="%version%-0"
+  revision="%version%-1"
   priority="10"
   reboot="false">
 
   <variable name="version" value="7.1.0" />
 
-  <check type="uninstall" condition="versiongreaterorequal" path="MeadCo ScriptX (v%version%.*)" value="%version%" />
+  <check type="uninstall" condition="versiongreaterorequal" path="MeadCo ScriptX (.*" value="%version%" />
 
   <install cmd='msiexec /i "%SOFTWARE%\MeadCo\%version%\ScriptX.msi" %MSI%' />
 
