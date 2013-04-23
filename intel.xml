@@ -29,6 +29,7 @@
   <install cmd='"%SOFTWARE%\Intel\%version%\iata_enu.exe" %flags%' />
   <install cmd='sc config IAStorDataMgrSvc start= demand' />
   <install cmd='reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "IAStorIcon" /f'><exit code="1" /></install>
+  <install cmd='reg delete "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run" /v "IAStorIcon" /f' architecture='x64'><exit code="1" /></install>
 
   <upgrade   include='install' />
   <downgrade include='install' />
