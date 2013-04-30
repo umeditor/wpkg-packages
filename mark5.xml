@@ -11,7 +11,7 @@
 
   <depends package-id="dotnet4" />
 
-  <variable name="version" value="1.19.31" />
+  <variable name="version" value="1.19.41" />
   <variable name='PKG_SOURCE'      value='%SOFTWARE%\Mark5\%version%\%PROCESSOR_ARCHITECTURE%\Mark5Install.msi' />
   <variable name='PKG_DESTINATION' value='%PROGRAMFILES%\Mark5' />
 
