@@ -5,19 +5,20 @@
 <package
   id="mark5"
   name="MARK Communication System 5"
-  revision="%version%-0"
+  revision="%version%-1"
   priority="10"
   reboot="false">
 
   <depends package-id="dotnet4" />
 
   <variable name="version" value="1.19.41" />
-  <variable name='PKG_SOURCE'      value='%SOFTWARE%\Mark5\%version%\%PROCESSOR_ARCHITECTURE%\Mark5Install.msi' />
-  <variable name='PKG_DESTINATION' value='%PROGRAMFILES%\Mark5' />
+  <variable name='PKG_SOURCE'      value="%SOFTWARE%\Mark5\%version%\%PROCESSOR_ARCHITECTURE%\Mark5Install.msi" />
+  <variable name='PKG_DESTINATION' value="%PROGRAMFILES%\Mark5" />
 
   <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION%\Mark5.exe" value="%version%" />
 
   <install   cmd='msiexec /i "%PKG_SOURCE%" %MSI%' />
+  <install   cmd='%COMSPEC% /C mkdir "%PKG_DESTINATION%"'><exit code='any' /></install>
   <install   cmd='%COMSPEC% /C copy /Y "%SOFTWARE%\Mark5\ConnectionInfo.xml" "%PKG_DESTINATION%"' />
   <upgrade   include='install' />
   <downgrade include='install' />
