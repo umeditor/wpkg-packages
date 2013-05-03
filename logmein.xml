@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<packages>
+
+  <!--
+  NOTES
+  1) Only works with Pro or Central - Free on it's own cannot be silently installed
+  -->
+
+<package
+  id="logmein"
+  name="LogMeIn"
+  revision="%version%-10"
+  reboot="false"
+  priority="10">
+
+  <variable name="version"    value="4.1.2694" />
+  <variable name="PKG_SOURCE" value="%SOFTWARE%\LogMeIn\LogMeIn.msi" />
+
+  <check type="uninstall" condition="versiongreaterorequal" path="LogMeIn" value="%version%" />
+
+  <install   cmd='msiexec /i "%PKG_SOURCE%" %MSI%' />
+  <upgrade   include='install' />
+  <downgrade include='install' />
+  <remove    cmd='msiexec /x "%PKG_SOURCE%" %MSI%'><exit code='any' /></remove>
+</package>
+
+</packages>
