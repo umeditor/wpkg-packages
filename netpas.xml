@@ -59,11 +59,12 @@
   reboot="false"
   priority="10">
 
-  <variable name="version" value="3.0.0.0" />
-  <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\Netpas\Estimator" architecture="x86" />
+  <variable name="version" value="3.0.3.9" />
+  <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\Netpas\Estimator"      architecture="x86" />
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\Netpas\Estimator" architecture="x64" />
   <variable name="DESKTOP" value="%ALLUSERSPROFILE%\Desktop" os="windows xp" />
   <variable name="DESKTOP" value="%PUBLIC%\Desktop"          os="windows 7" />
+  <variable name="DESKTOP" value="%PUBLIC%\Desktop"          os="windows 8" />
 
   <check type="uninstall" condition="exists" path="Netpas Estimator" />
   <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION%\estimator.exe" value="%version%" />
