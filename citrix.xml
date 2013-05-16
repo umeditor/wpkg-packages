@@ -2,6 +2,24 @@
 
 <packages>
 
+<package
+  id="citrix_receiver"
+  name="Citrix Receiver"
+  revision="%version%-0"
+  reboot="false"
+  priority="10">
+
+  <variable name="version" value="11.3.0.24" />
+
+  <check type="uninstall" condition="versiongreaterorequal" path="Citrix Receiver" value="%version%" />
+
+  <install   cmd='msiexec /i "%SOFTWARE%\Citrix\Receiver\%version%\CitrixReceiverWeb.exe" /silent' />
+
+  <upgrade   include='install' />
+  <downgrade include='install' />
+
+</package>
+
   <!--
    NOTES
    1) I haven't figured out how to properly call the installer using the .exe from citrix.com so instead unzip the .exe first to get the .msi files
