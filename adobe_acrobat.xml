@@ -9,8 +9,8 @@
   reboot="false"
   priority="10">
 
-  <variable name="version"     value="10.1.5" />
-  <variable name="fileversion" value="1015" />
+  <variable name="version"     value="10.1.7" />
+  <variable name="fileversion" value="1017" />
   <variable name="version_sec"     value="10.1.6" />
   <variable name="fileversion_sec" value="1016" />
   <variable name="language"    value="en_US" lcid="0409,0809,4809" />
@@ -23,9 +23,11 @@
   <install cmd='msiexec %MSI% /p "%SOFTWARE%\Adobe\Standard\10\AcrobatUpd%fileversion%.msp" REINSTALL=ALL REINSTALLMODE=omus'>
     <exit code='3010' reboot='false' />
   </install>
+  <!--
   <install cmd='msiexec %MSI% /p "%SOFTWARE%\Adobe\Standard\10\AcrobatSecUpd%fileversion_sec%.msp" REINSTALL=ALL REINSTALLMODE=omus'>
     <exit code='3010' reboot='false' />
   </install>
+  -->
   <install include='kill' />
 
   <upgrade include="install" />
