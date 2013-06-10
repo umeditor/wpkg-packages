@@ -11,26 +11,28 @@
 <package
   id="opal"
   name="Opal Player"
-  revision="%version%-0"
+  revision="%version%-1"
   reboot="false"
   priority="10">
 
   <variable name="version" value="2.1.1.1" />
+  <variable name='PKG_DESTINATION' value='%PROGRAMFILES%\Internet Explorer\Plugins\Opal'      architecture='x86' />
+  <variable name='PKG_DESTINATION' value='%PROGRAMFILES(x86)%\Internet Explorer\Plugins\Opal' architecture='x64' />
 
-  <check type="logical" condition="or">
-    <check type="file" condition="versionequalto" path="%PROGRAMFILES%\Internet Explorer\Plugins\Opal\OpalATL.dll" value="%version%" />
-    <check type="file" condition="versionequalto" path="%PROGRAMFILES(x86)%\Internet Explorer\Plugins\Opal\OpalATL.dll" value="%version%" />
-  </check>
+  <check type="file" condition="versionequalto" path="%PKG_DESTINATION%\OpalATL.dll" value="%version%" />
 
   <install cmd='%COMSPEC% /C copy /y "%SOFTWARE%\Opal\setup.iss" "c:\opal.iss"' />
-  <install cmd='"%SOFTWARE%\Opal\ieplug.exe" /s /a /s /sms /f1c:\opal.iss' />
+  <install cmd='"%SOFTWARE%\Opal\ieplug.exe" /s /a /s /sms /f1c:\opal.iss' timeout='300' />
   <install include='remove_iss' />
 
+  <!--
+      Put this back in when we are actually doing an upgrade
   <upgrade   include='install' />
   <downgrade include='install' />
+  -->
 
   <remove include='remove_iss' />
-  <remove cmd='%comspec% /c RD /Q /S "%PROGRAMFILES%\Internet Explorer\Plugins\Opal"' />
+  <remove cmd='%comspec% /c RD /Q /S "%PKG_DESTINATION%\"' />
 
   <commands>
     <command type='remove_iss' cmd='%COMSPEC% /C IF EXIST c:\opal.iss del /F /Q c:\opal.iss' />
