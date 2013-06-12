@@ -5,6 +5,7 @@
 <!--
   NOTES
   1) You MUST set the environment variable ANSYS_LICENSE_SERVER (GP is the easiest)
+  2) It's probably easiest to deploy license server changes via the ansyslmd.ini file
 -->
 
 <package
