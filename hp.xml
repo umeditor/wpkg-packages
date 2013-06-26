@@ -10,6 +10,24 @@
 <packages>
 
 <package
+  id="hp_sdm"
+  name="HP SoftPaq Download Manager"
+  revision="1"
+  priority="10"
+  reboot="false">
+
+  <variable name="version" value="3.4.11.0" />
+
+  <check type="uninstall" condition="versiongreaterorequal" path="HP SoftPaq Download Manager" value="%version%" />
+
+  <install   cmd='msiexec /i "%SOFTWARE%\HP\SDM\%version%" %MSI%' />
+  <upgrade   include='install' />
+  <downgrade include='install' />
+  <remove    cmd='msiexec /x "%SOFTWARE%\HP\SDM\%version%" %MSI%' />
+
+</package>
+
+<package
   id="hp_bluetooth"
   name="HP BlueTooth"
   revision="1"
