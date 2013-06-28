@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<packages>
+
+<package
+  id="ms_sccm_client"
+  name="SCCM Client"
+  revision="%version%-0"
+  reboot="false"
+  priority="10">
+
+  <variable name='version' value='5.0.7804.1000' />
+
+  <depends package-id='ms_dotnet4' />
+
+  <check type="file" condition="versiongreaterorequal" path="%WINDIR%\CCM\SCClient.exe" value='%version%' />
+
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\Microsoft\SCCM_Client\ccmsetup.exe' />
+
+  <install cmd='"%PKG_SOURCE%"' />
+
+</package>
+
+</packages>
