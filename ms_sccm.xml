@@ -12,6 +12,7 @@
   <variable name='version' value='5.0.7804.1000' />
 
   <depends package-id='dotnet4' />
+  <depends package-id='vcruntime' />
 
   <check type="file" condition="versiongreaterorequal" path="%WINDIR%\CCM\SCClient.exe" value='%version%' />
 
