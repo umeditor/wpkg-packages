@@ -327,10 +327,10 @@ dcsu: [
   :package_id => 'vim'},
 ],
 
-:vlc => [
-  {:url => 'http://sourceforge.net/projects/vlc/files/%version%/win32/vlc-%version%-win32.exe/download',
-  :destination => ['VLC', 'vlc-%version%-win32.exe'],
-  :package_id => 'vlc'},
+vlc: [
+  {url: 'http://get.videolan.org/vlc/%version%/win32/vlc-%version%-win32.exe',
+  destination: ['VLC', 'vlc-%version%-win32.exe'],
+  package_id: 'vlc'},
 ],
 
 :wpkg => [
