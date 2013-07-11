@@ -23,7 +23,7 @@ h2. Notes
 
 h3. Regular expressions
 
-WPKG supports regular expressions however various parts do it differently. 
+WPKG supports regular expressions however various parts do it differently.
 
 ## <host> use + for matching multiple characters
 ## <check> use * for matching multiple characters
@@ -48,4 +48,3 @@ h3. Versions
 ## MSP      - set to "REINSTALL=ALL REINSTALLMODE=omus" (without quotes)
 ## SOFTWARE - set to root of the application store without trailing backslash
 ## WPKG     - set to root of server WPKG installation without trailing backslash
-
