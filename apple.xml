@@ -23,7 +23,7 @@ NOTES
   <depends package-id="quicktime" />
   -->
 
-  <variable name="version" value="11.0.3.42" />
+  <variable name="version" value="11.0.4.4" />
   <variable name="PKG_SOURCE" value="%SOFTWARE%\Apple\iTunes\%version%\iTunes.msi"   architecture="x86" />
   <variable name="PKG_SOURCE" value="%SOFTWARE%\Apple\iTunes\%version%\iTunes64.msi" architecture="x64" />
 
