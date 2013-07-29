@@ -31,15 +31,39 @@
 <package
   id="visioviewer"
   name="MS Visio Viewer - Latest Version"
-  revision="2"
+  revision="%version%-2"
   reboot="false"
   priority="10"
   execute="once">
 
-  <depends package-id="visioviewer2010" />
+  <depends package-id="visioviewer2013" />
 
-  <variable name="version" value="2010" />
+  <variable name="version" value="2013" />
 
+</package>
+
+<package
+  id="visioviewer2013"
+  name="MS Visio Viewer 2013"
+  revision="2013-1"
+  reboot="false"
+  priority="10">
+
+  <check type="logical" condition="or">
+    <check type="uninstall" condition="exists" path="Microsoft Visio Viewer 2013" />
+    <check type="uninstall" condition="exists" path="Microsoft Visio 2013" />
+    <check type="uninstall" condition="exists" path="Microsoft Visio Premium 2013" />
+  </check>
+
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\Microsoft\VisioViewer\visioviewer32bit.exe' architecture='x86' />
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\Microsoft\VisioViewer\visioviewer64bit.exe' architecture='x64' />
+
+  <install   cmd='"%PKG_SOURCE%" %MSI%' />
+  <upgrade   include='install' />
+  <downgrade include='install' />
+  <!--
+  <remove    cmd='msiexec %MSI% /x{95140000-0052-0409-0000-0000000FF1CE}' />
+  -->
 </package>
 
 <package
