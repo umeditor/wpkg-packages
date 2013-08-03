@@ -16,7 +16,7 @@
   reboot="false"
   priority="10">
 
-  <variable name="version" value="2.0.7" />
+  <variable name="version" value="2.0.8" />
   <variable name="PKG_SOURCE"      value="%SOFTWARE%\VLC\vlc-%version%-win32.exe" />
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES%\VideoLAN\VLC"      architecture="x86" />
   <variable name="PKG_DESTINATION" value="%PROGRAMFILES(x86)%\VideoLAN\VLC" architecture="x64" />
