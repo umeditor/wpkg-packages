@@ -2,6 +2,26 @@
 
 <packages>
 
+<package
+		id="sophos-mit"
+		name="Sophos Anti-Virus for Windows"
+		revision="%version%-0"
+		reboot="false"
+		priority="20">
+	
+	<variable name="version" value="2.9.0.344" />
+		
+	<check type="uninstall" condition="versiongreaterorequal" path="Sophos AutoUpdate" value="%version%"/>
+	
+	<install cmd="%SOFTWARE%\Sophos\sav-silent-JPAL.exe"/>
+ 	<upgrade   include='install' />
+ 	<downgrade include='install' />
+	<remove cmd='msiexec %MSI% /X{15C418EB-7675-42be-B2B3-281952DA014D}'>
+		<exit code='3010' reboot="postponed" />
+	</remove>
+
+</package>
+
 <!--
   NOTES
   1) There's more than just Anti-Virus and AutoUpdate, I don't use
