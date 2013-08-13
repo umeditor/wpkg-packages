@@ -19,7 +19,7 @@
 
   <check type="uninstall" condition="exists" path="Microsoft Office Professional Plus 2010" />
 
-  <install cmd='"%SOFTWARE%\Microsoft\MS Office Pro Plus 2010\x86\setup.exe"'>
+  <install cmd='"%SOFTWARE%\Microsoft\MS Office Pro Plus 2010\x86\setup.exe" /adminfile "%SOFTWARE%\Microsoft\MS Office Pro Plus 2010\x86\mit2010-unattended.msp"'>
     <exit code="1641" reboot="postponed" />
     <exit code="3010" reboot="postponed" />
   </install>
