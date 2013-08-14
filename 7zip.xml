@@ -16,8 +16,8 @@
     <variable name="patched_exe" value="%SOFTWARE%\7zip\%PROCESSOR_ARCHITECTURE%\7zFM_%fileversion%.exe" />
 
     <check type="logical" condition="or">
-      <check type="uninstall" condition="exists" path="7-Zip %version%"/>
-      <check type="uninstall" condition="exists" path="7-Zip %version% (x64 edition)" />
+      <check type="uninstall" condition="versiongreaterorequal" path="7-Zip %version%" value="%version%"/>
+      <check type="uninstall" condition="versiongreaterorequal" path="7-Zip %version% (x64 edition)" value="%version%"/>
     </check>
 
     <install cmd='msiexec /i "%PKG_SOURCE%" %MSI%'><exit code="3010" /></install>
