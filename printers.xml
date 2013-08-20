@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+	<package id="printer-slayer" name="Printer: Slayer" revision="1" reboot="false" priority="72">
+
+		<check type="registry" condition="exists" path="HKLM\SYSTEM\CurrentControlSet\Control\Print\Printers\Slayer" />
+
+		<install cmd='%comspec% /C start "" /WAIT "%SOFTWARE%\printers\upd-pcl5-x64-5.5.0.12834\Install.exe" /q /h /n"Slayer" /sm"slayer.mit.edu" /npf /u /nd /gcfm"%SOFTWARE%\printers\upd-pcl5-x64-5.5.0.12834\hpcpu130.cfm"' >
+			<exit code="0" />
+		</install>
+
+		<upgrade cmd='%comspec% /C start "" /WAIT "%SOFTWARE%\printers\upd-pcl5-x64-5.5.0.12834\Install.exe" /q /h /n"Slayer" /sm"slayer.mit.edu" /npf /u /nd /gcfm"%SOFTWARE%\printers\upd-pcl5-x64-5.5.0.12834\hpcpu130.cfm"' >
+			<exit code="0" />
+		</upgrade>
+
+	</package>
+	
+	
+	<package id="printer-blacksabbath" name="Printer: blacksabbath" revision="1" reboot="false" priority="72">
+
+		<check type="registry" condition="exists" path="HKLM\SYSTEM\CurrentControlSet\Control\Print\Printers\BlackSabbath" />
+
+		<!--
+			/q Quiet mode, no prompts
+			/h Hides the install dialog
+			/n"<Printer Name>" Uses the specified name as the name of the printer, e.g. /n"HP LaserJet 8150"
+			/npf Don't open the Printers folder on completion
+			/u Use the existing printer driver if it's already installed
+			/gcfm"<cfm file>" - Specify DCU configuration file to be utilized for new printer installation, e.g. /gcfm"c:\temp\duplex.cfm"
+		-->
+		<install cmd='%comspec% /C start "" /WAIT "%SOFTWARE%\printers\upd-pcl5-x64-5.5.0.12834\Install.exe" /q /h /n"BlackSabbath" /sm"pal-print.mit.edu" /npf /u /nd /gcfm"%SOFTWARE%\printers\upd-pcl5-x64-5.5.0.12834\hpcpu130.cfm"' >
+			<exit code="0" />
+		</install>
+
+		<upgrade cmd='%comspec% /C start "" /WAIT "%SOFTWARE%\printers\upd-pcl5-x64-5.5.0.12834\Install.exe" /q /h /n"BlackSabbath" /sm"pal-print.mit.edu" /npf /u /nd /gcfm"%SOFTWARE%\printers\upd-pcl5-x64-5.5.0.12834\hpcpu130.cfm"' >
+			<exit code="0" />
+		</upgrade>
+
+	</package>
+
+	<package id="printer-multipitch" name="Printer: MultiPitch" revision="1" reboot="false" priority="72">
+
+		<check type="registry" condition="exists" path="HKLM\SYSTEM\CurrentControlSet\Control\Print\Printers\MultiPitch" />
+
+		<install cmd='%comspec% /C start "" /WAIT "%SOFTWARE%\printers\upd-pcl5-x64-5.5.0.12834\Install.exe" /q /h /n"Multipitch" /sm"multipitch.mit.edu" /npf /u /nd /gcfm"%SOFTWARE%\printers\upd-pcl5-x64-5.5.0.12834\hpcpu130.cfm"' >
+			<exit code="0" />
+		</install>
+
+		<upgrade cmd='%comspec% /C start "" /WAIT "%SOFTWARE%\printers\upd-pcl5-x64-5.5.0.12834\Install.exe" /q /h /n"Multipitch" /sm"multipitch.mit.edu" /npf /u /nd /gcfm"%SOFTWARE%\printers\upd-pcl5-x64-5.5.0.12834\hpcpu130.cfm"' >
+			<exit code="0" />
+		</upgrade>
+
+	</package>
+
+	<package
+		id="printer-morphine"
+		name="Printer: Morphine"
+		revision="1"
+		priority='0' 
+		reboot='false'>
+
+		<variable name="version" value="1"/>
+		<variable name="port" value="morphine.mit.edu" />
+		<variable name="PrinterName" value="Morphine" />
+		<variable name="model" value="Dell 5350dn Laser Printer" />
+
+		<check type="registry" condition="exists" path="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Print\Printers\%PrinterName%" />
+
+		<install cmd='cscript %SYSTEMROOT%\System32\Printing_Admin_Scripts\en-US\prnport.vbs -a -r IP_%port% -h %port% -o lpr -q lp' />
+		<install cmd='cscript %SYSTEMROOT%\system32\Printing_Admin_Scripts\en-US\prndrvr.vbs -a -m "%model%" -v 3 -e "Windows x64" -i %SOFTWARE%\printers\dell-5230-5350-2012-11-23\drivers\Print\Win_2kXP\dkaclc40.inf' />
+		<install cmd='cscript %SYSTEMROOT%\system32\Printing_Admin_Scripts\en-US\prnmngr.vbs -a -p "%PrinterName%" -m "%model%" -r IP_%port%' />
+		<!--		<install cmd='%COMSPEC% /C if exist "%PROGRAMFILES(x86)%" rundll32 PrintUI.dll,PrintUIEntry /Sr /n "%PrinterName%" /a "%SOFTWARE%\printers\MorphineSettings.dat" r p' />
+	-->
+		<remove cmd='cscript %SYSTEMROOT%\system32\Printing_Admin_Scripts\en-US\prnmngr.vbs -d -p "%PrinterName%"' />
+		<remove cmd='cscript %SYSTEMROOT%\system32\Printing_Admin_Scripts\en-US\prnport.vbs -d -r IP_%port%' />
+	</package>
+	
+	  <package
+		id="printer-paperspitter"
+		name="Printer: Paper Spitter"
+		revision="1"
+		priority='0' 
+		reboot='false'>
+
+			<variable name="version" value="1"/>
+			<variable name="port" value="pal-copier1.mit.edu" />
+			<variable name="PrinterName" value="Morphine" />
+			<variable name="model" value="Konica Minolta bizhub C280" />
+
+			<check type="registry" condition="exists" path="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Print\Printers\%PrinterName%" />
+
+			<install cmd='cscript %SYSTEMROOT%\System32\Printing_Admin_Scripts\en-US\prnport.vbs -a -r IP_%port% -h %port% -o lpr -q lp' />
+			<install cmd='cscript %SYSTEMROOT%\system32\Printing_Admin_Scripts\en-US\prndrvr.vbs -a -m "%model%" -v 3 -e "Windows x64" -i %SOFTWARE%\printers\c360_series_win8_adobe_postscript_ps_fax_xps_v3700\Drivers\PCL\EN\Win_x64\KOAZ8J__.INF' />
+			<install cmd='cscript %SYSTEMROOT%\system32\Printing_Admin_Scripts\en-US\prnmngr.vbs -a -p "%PrinterName%" -m "%model%" -r IP_%port%' />
+			<!--		<install cmd='%COMSPEC% /C if exist "%PROGRAMFILES(x86)%" rundll32 PrintUI.dll,PrintUIEntry /Sr /n "%PrinterName%" /a "%SOFTWARE%\printers\MorphineSettings.dat" r p' />
+	-->
+			<remove cmd='cscript %SYSTEMROOT%\system32\Printing_Admin_Scripts\en-US\prnmngr.vbs -d -p "%PrinterName%"' />
+			<remove cmd='cscript %SYSTEMROOT%\system32\Printing_Admin_Scripts\en-US\prnport.vbs -d -r IP_%port%' />
+		</package>
+
+</packages>
