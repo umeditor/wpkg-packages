@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+	<package
+			id="certaid"
+			name="CertAid for Internet Explorer"
+			revision="1"
+			reboot="false"
+			priority="0">
+		<check type="uninstall" condition="versiongreaterorequal" path="CertAid for Internet Explorer" value="1.1.0.0" />
+		<install cmd='msiexec /i "%SOFTWARE%\CertAid\CertAid Installer.msi" /qn'>
+			<exit code="0" />
+		</install>
+		<remove  cmd='MsiExec.exe /x{04626EAB-19C2-452B-9EEF-96F85E454480} /qn' />
+		<upgrade cmd='msiexec /i "%SOFTWARE%\CertAid\CertAid Installer.msi" /qn' />
+	</package>
+
+</packages>
