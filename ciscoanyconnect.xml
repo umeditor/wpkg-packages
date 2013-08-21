@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages>
+
+	<package
+			id="ciscoanyconnect"
+			name="Cisco AnyConnect Secure Mobility VPN Client"
+			revision="1"
+			reboot="false"
+			priority="0">
+		<check type="uninstall" condition="versiongreaterorequal" path="Cisco AnyConnect Secure Mobility Client" value="3.1.02026" />
+		<install cmd='msiexec /i "%SOFTWARE%\Cisco\anyconnect-win-3.1.02026.msi" /qn'>
+			<exit code="0" />
+		</install>
+		<remove  cmd='MsiExec.exe /x{9AA9FEE7-9F99-4E69-947A-49F7DA0DDA3A} /qn' />
+		<upgrade cmd='msiexec /i "%SOFTWARE%\Cisco\anyconnect-win-3.1.02026.msi" /qn' />
+	</package>
+
+</packages>
