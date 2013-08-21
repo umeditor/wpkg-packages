@@ -2,6 +2,39 @@
 
 <packages>
 
+  <package
+	id="acrobatX"
+	name="Adobe Acrobat X Pro - English, Français, Deutsch"
+	revision="10.1.7"
+	reboot="false"
+	priority="1">
+	
+    	<check type="uninstall" condition="exists" path="Adobe Acrobat X Pro - English, Français, Deutsch"/>
+
+    	<!-- check for 32bit and 64bit Systems -->
+    	<check type="logical" condition="or">
+          <check type="file" condition="versiongreaterorequal" path="%PROGRAMFILES%\Adobe\Acrobat 10.0\Acrobat\Acrobat.dll" value="10.1.7.27" />
+          <check type="file" condition="versiongreaterorequal" path="%PROGRAMFILES(x86)%\Adobe\Acrobat 10.0\Acrobat\Acrobat.dll" value="10.1.7.27" />
+    	</check>
+
+    	<!-- alter this line to point at your custom transform, or just use setup.exe if you've a modified setup.ini -->
+    	<install cmd="%SOFTWARE%\adobe\acrobatX\setup.exe">
+			<exit code="0"/>
+      		<exit code="3010" reboot="postponed"/>
+    	</install>
+    	<install cmd='msiexec /qn /norestart /update "%SOFTWARE%\adobe\acrobatX\AcrobatUpd1017.msp"'>
+      		<exit code="0"/>
+      		<exit code="3010" reboot="postponed"/>
+    	</install>
+    	<remove cmd="msiexec /qn /norestart /x {AC76BA86-1033-F400-7760-000000000005}">
+      		<exit code="0"/>
+      		<exit code="1614"/>
+      		<exit code="1605"/>
+      		<!-- already removed somehow -->
+      		<exit code="3010" reboot="postponed"/>
+    	</remove>
+  </package>
+
 <package
   id="adobeacrobat_standard"
   name="Adobe Acrobat X - Standard"
