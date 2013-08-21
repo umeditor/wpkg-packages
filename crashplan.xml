@@ -13,7 +13,7 @@
 	<variable name="PKG_SOURCE" value="%SOFTWARE%\CrashPlan\CrashPlanPRO_%VERSION%_Win.exe"     architecture="x86" />
     <variable name="PKG_SOURCE" value="%SOFTWARE%\CrashPlan\CrashPlanPRO-x64_%VERSION%_Win.exe" architecture="x64" />
 		
-	<check type="uninstall" condition="versiongreaterorequal" path="CrashPlan Pro" value="%VERSION%"/>
+	<check type="uninstall" condition="versiongreaterorequal" path="CrashPlan" value="%VERSION%"/>
 	
 	<install cmd='"%PKG_SOURCE%" /quiet'><exit code="3010" /></install>
  	<upgrade   include='install' />
