@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE nitropdf [
+  <!ENTITY id "nitropdfpro8">
+  <!ENTITY version "8.5.6.5">
+  <!ENTITY msi_32bit "%SOFTWARE%\NitroPDF\%version%\nitro_x86.msi">
+  <!ENTITY msi_64bit "%SOFTWARE%\NitroPDF\%version%\nitro_x64.msi">
+  <!ENTITY uninstall_32bit "Nitro PDF Professional">
+  <!ENTITY uninstall_64bit "Nitro PDF Professional (64-bit)">
+  <!ENTITY nitropdf SYSTEM "../templates/msi.xml">
+]>
+<packages>&nitropdf;</packages>

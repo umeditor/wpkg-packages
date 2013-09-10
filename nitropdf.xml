@@ -10,51 +10,12 @@
 
 <package
   id="nitropdfpro"
-  name="NitroPDF 6 Pro"
-  revision="%version%-2"
+  name="Nitro Pro"
+  revision="%version%-0"
   reboot="false"
   priority="15">
 
-  <variable name="version" value="6.1.4.1" />
-
-  <check type='logical' condition='or'>
-    <check type="uninstall" condition="versiongreaterorequal" path="Nitro PDF Professional"          value="%version%" />
-    <check type="uninstall" condition="versiongreaterorequal" path="Nitro PDF Professional (64-bit)" value="%version%" />
-  </check>
-
-  <install   cmd='msiexec %MSI% /i "%SOFTWARE%\NitroPDF\nitro_x86.msi"' architecture="x86" />
-  <install   cmd='msiexec %MSI% /i "%SOFTWARE%\NitroPDF\nitro_x64.msi"' architecture="x64" />
-
-  <upgrade   include='install' />
-  <downgrade include='install' />
-
-  <remove    cmd='msiexec %MSI% /x "%SOFTWARE%\NitroPDF\nitro_x86.msi"' architecture="x86" />
-  <remove    cmd='msiexec %MSI% /x "%SOFTWARE%\NitroPDF\nitro_x64.msi"' architecture="x64" />
-
-</package>
-
-<package
-  id="nitropdfproocr"
-  name="NitroPDF 6 Pro OCR"
-  revision="%version%-2"
-  reboot="false"
-  priority="15">
-
-  <variable name="version" value="6.1.4.1" />
-
-  <check type='logical' condition='or'>
-    <check type="uninstall" condition="versiongreaterorequal" path="Nitro PDF Professional"          value="%version%" />
-    <check type="uninstall" condition="versiongreaterorequal" path="Nitro PDF Professional (64-bit)" value="%version%" />
-  </check>
-
-  <install   cmd='msiexec %MSI% /i "%SOFTWARE%\NitroPDF\nitro_ocr_x86.msi"' architecture="x86" />
-  <install   cmd='msiexec %MSI% /i "%SOFTWARE%\NitroPDF\nitro_ocr_x64.msi"' architecture="x64" />
-
-  <upgrade   include='install' />
-  <downgrade include='install' />
-
-  <remove    cmd='msiexec %MSI% /x "%SOFTWARE%\NitroPDF\nitro_ocr_x86.msi"' architecture="x86" />
-  <remove    cmd='msiexec %MSI% /x "%SOFTWARE%\NitroPDF\nitro_ocr_x64.msi"' architecture="x64" />
+  <depends package-id='nitropdfpro6' />
 
 </package>
 
