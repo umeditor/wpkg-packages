@@ -6,6 +6,26 @@
   2) You have to rename the files you download
 -->
 
+<!DOCTYPE dameware6 [
+  <!ENTITY id "dameware6">
+  <!ENTITY version "6.8.1.4">
+  <!ENTITY msi_32bit "%SOFTWARE%\DameWare\%PROCESSOR_ARCHITECTURE%\DWMRC6x.msi">
+  <!ENTITY msi_64bit "%SOFTWARE%\DameWare\%PROCESSOR_ARCHITECTURE%\DWMRC6x.msi">
+  <!ENTITY uninstall_32bit "DameWare Mini Remote Control">
+  <!ENTITY uninstall_64bit "DameWare Mini Remote Control">
+  <!ENTITY nitropdf SYSTEM "../templates/msi.xml">
+]>
+
+<!DOCTYPE dameware7 [
+  <!ENTITY id "dameware7">
+  <!ENTITY version "7.2.0.0">
+  <!ENTITY msi_32bit "%SOFTWARE%\DameWare\%PROCESSOR_ARCHITECTURE%\DWMRC7.msi">
+  <!ENTITY msi_64bit "%SOFTWARE%\DameWare\%PROCESSOR_ARCHITECTURE%\DWMRC7.msi">
+  <!ENTITY uninstall_32bit "DameWare Mini Remote Control 7.2">
+  <!ENTITY uninstall_64bit "DameWare Mini Remote Control 7.2">
+  <!ENTITY nitropdf SYSTEM "../templates/msi.xml">
+]>
+
 <packages>
 
 <package
@@ -19,39 +39,8 @@
 
 </package>
 
-<package
-  id="dameware7"
-  name="DameWare Remote Control Client 7"
-  revision="%version%-0"
-  reboot="false"
-  priority="10">
+&dameware6;
 
-  <variable name="version" value="7.2.0.0" />
+&dameware7;
 
-  <check type="uninstall" condition="versiongreaterorequal" path="DameWare Mini Remote Control 7.2" value="%version%" />
-
-  <install   cmd='msiexec /i "%SOFTWARE%\DameWare\%PROCESSOR_ARCHITECTURE%\DWMRC7.msi" %MSI%' />
-  <upgrade   include='install' />
-  <downgrade include='install' />
-  <remove    cmd='msiexec /x "%SOFTWARE%\DameWare\%PROCESSOR_ARCHITECTURE%\DWMRC7.msi" %MSI%' />
-
-</package>
-
-<package
-  id="dameware6"
-  name="DameWare Remote Control Client 6"
-  revision="%version%-0"
-  reboot="false"
-  priority="10">
-
-  <variable name="version" value="6.8.1.4" />
-
-  <check type="uninstall" condition="versiongreaterorequal" path="DameWare Mini Remote Control" value="%version%" />
-
-  <install   cmd='msiexec /i "%SOFTWARE%\DameWare\%PROCESSOR_ARCHITECTURE%\DWMRC6x.msi" %MSI%' />
-  <upgrade   include='install' />
-  <downgrade include='install' />
-  <remove    cmd='msiexec /x "%SOFTWARE%\DameWare\%PROCESSOR_ARCHITECTURE%\DWMRC6x.msi" %MSI%' />
-
-</package>
 </packages>
