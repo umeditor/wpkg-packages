@@ -127,20 +127,21 @@
 <package
   id="adobereader_fonts"
   name="Acrobat Reader - Font Pack"
-  revision="%version%-4"
+  revision="%version%-0"
   reboot="false"
   priority="10">
 
-  <variable name="version" value="11" />
+  <variable name="mainversion" value="11" />
+  <variable name="version" value="%mainversion%.0.0" />
 
   <depends package-id="adobereaderX" />
 
   <check type="uninstall" condition="versiongreaterorequal" path="Extended Asian Language font pack for Adobe Reader XI" value="%version%" />
 
-  <install   cmd='msiexec %MSI% /i "%SOFTWARE%\Adobe\Reader\%version%\FontPack11000_XtdAlf_Lang.msi"' />
+  <install   cmd='msiexec %MSI% /i "%SOFTWARE%\Adobe\Reader\%mainversion%\FontPack11000_XtdAlf_Lang.msi"' />
   <upgrade   include='install' />
   <downgrade include='install' />
-  <install   cmd='msiexec %MSI% /x "%SOFTWARE%\Adobe\Reader\%version%\FontPack11000_XtdAlf_Lang.msi"' />
+  <install   cmd='msiexec %MSI% /x "%SOFTWARE%\Adobe\Reader\%mainversion%\FontPack11000_XtdAlf_Lang.msi"' />
 
 </package>
 
