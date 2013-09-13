@@ -105,11 +105,11 @@
   reboot="false">
 
   <variable name="version" value="3.16.0000" os="windows xp" />
-  <variable name="version" value="5.02.0011" os="windows 7" />
-  <variable name="version" value="5.02.0011" os="windows 8" />
+  <variable name="version" value="5.02.0018" os="windows 7" />
+  <variable name="version" value="5.02.0018" os="windows 8" />
   <variable name="PKG_SOURCE" value="%SOFTWARE%\ThinkPad\systemupdate316-2012-12-24.exe" os="windows xp" />
-  <variable name="PKG_SOURCE" value="%SOFTWARE%\ThinkPad\systemupdate502-04-11-2013.exe" os="windows 7" />
-  <variable name="PKG_SOURCE" value="%SOFTWARE%\ThinkPad\systemupdate502-04-11-2013.exe" os="windows 8" />
+  <variable name="PKG_SOURCE" value="%SOFTWARE%\ThinkPad\systemupdate502-06-26-2013.exe" os="windows 7" />
+  <variable name="PKG_SOURCE" value="%SOFTWARE%\ThinkPad\systemupdate502-06-26-2013.exe" os="windows 8" />
   <variable name="PKG_PARAMS" value='-s -a /s /v"/qn /norestart"' />
 
   <check type="logical" condition="or">

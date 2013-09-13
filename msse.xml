@@ -18,7 +18,7 @@
   reboot="false"
   priority="50">
 
-  <variable name='version' value='2.1.1116.0' />
+  <variable name='version' value='4.3.216.0' />
   <variable name='update_interval' value='4' />
   <variable name="DESKTOP" value="%ALLUSERSPROFILE%\Desktop" os="windows xp" />
   <variable name="DESKTOP" value="%PUBLIC%\Desktop"          os="windows 7" />

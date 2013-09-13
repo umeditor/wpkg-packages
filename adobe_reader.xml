@@ -31,7 +31,7 @@
   reboot="false"
   priority="10">
 
-  <variable name="last" value="3" />
+  <variable name="last" value="4" />
   <variable name="mainversion" value="11" />
   <variable name="version" value="%mainversion%.0.%last%" />
   <variable name="language" value="en_US" lcid="0409,0809,4809" />
@@ -125,60 +125,54 @@
 </package>
 
 <package
-  id="adobereader_jp"
-  name="Acrobat Reader X - Japanese Font Pack"
-  revision="%version%-4"
+  id="adobereader_fonts"
+  name="Acrobat Reader - Font Pack"
+  revision="%version%-0"
   reboot="false"
   priority="10">
 
-  <variable name="version" value="10.0.0" />
+  <variable name="mainversion" value="11" />
+  <variable name="version" value="%mainversion%.0.0" />
 
   <depends package-id="adobereaderX" />
 
-  <check type="uninstall" condition="versiongreaterorequal" path="Japanese Fonts Support For Adobe Reader X" value="%version%" />
+  <check type="uninstall" condition="versiongreaterorequal" path="Extended Asian Language font pack for Adobe Reader XI" value="%version%" />
 
-  <install   cmd='msiexec %MSI% /i "%SOFTWARE%\Adobe\Reader\10\FontPack1000_ja_JP.msi"' />
+  <install   cmd='msiexec %MSI% /i "%SOFTWARE%\Adobe\Reader\%mainversion%\FontPack11000_XtdAlf_Lang.msi"' />
   <upgrade   include='install' />
   <downgrade include='install' />
-  <remove    cmd='msiexec %MSI% /x "%SOFTWARE%\Adobe\Reader\10\FontPack1000_ja_JP.msi"' />
+  <install   cmd='msiexec %MSI% /x "%SOFTWARE%\Adobe\Reader\%mainversion%\FontPack11000_XtdAlf_Lang.msi"' />
+
 </package>
 
 <package
   id="adobereader_cn"
-  name="Acrobat Reader X - Chinese Font Pack"
-  revision="%version%-3"
+  name="Acrobat Reader - Chinese Font Pack"
+  revision="1000"
   reboot="false"
   priority="10">
 
-  <variable name="version" value="10.0.0" />
+  <depends package-id="adobereader_fonts" />
+</package>
 
-  <depends package-id="adobereaderX" />
+<package
+  id="adobereader_jp"
+  name="Acrobat Reader - Japanese Font Pack"
+  revision="1000"
+  reboot="false"
+  priority="10">
 
-  <check type="uninstall" condition="versiongreaterorequal" path="Chinese Simplified Fonts Support For Adobe Reader X" value="%version%" />
-
-  <install   cmd='msiexec %MSI% /i "%SOFTWARE%\Adobe\Reader\10\FontPack1000_zh_CN.msi"' />
-  <upgrade   include='install' />
-  <downgrade include='install' />
-  <remove    cmd='msiexec %MSI% /x "%SOFTWARE%\Adobe\Reader\10\FontPack1000_zh_CN.msi"' />
+  <depends package-id="adobereader_fonts" />
 </package>
 
 <package
   id="adobereader_kr"
-  name="Acrobat Reader X - Korean Font Pack"
-  revision="%version%-4"
+  name="Acrobat Reader - Korean Font Pack"
+  revision="1000"
   reboot="false"
   priority="10">
 
-  <variable name="version" value="10.0.0" />
-
-  <depends package-id="adobereaderX" />
-
-  <check type="uninstall" condition="versiongreaterorequal" path="Korean Fonts Support For Adobe Reader X" value="%version%" />
-
-  <install   cmd='msiexec %MSI% /i "%SOFTWARE%\Adobe\Reader\10\FontPack1000_ko_KR.msi"' />
-  <upgrade   include='install' />
-  <downgrade include='install' />
-  <remove    cmd='msiexec %MSI% /x "%SOFTWARE%\Adobe\Reader\10\FontPack1000_ko_KR.msi"' />
+  <depends package-id="adobereader_fonts" />
 </package>
 
 <package
