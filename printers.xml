@@ -4,12 +4,13 @@
 	<package
 		id="jpal-printers"
 		name="J-PAL Printers"
-		revision="1.01"
+		revision="%FileVersion%.0"
 		priority="0"
 		reboot="false">
 
 		<variable name="Printer" value="BlackSabbath" />
-		<variable name="FileName" value="printers.printerExport" />
+		<variable name="FileVersion" value="3" />
+		<variable name="FileName" value="printers-%FileVersion%.printerExport" />
 
 		<check
 			type="registry"
@@ -18,6 +19,7 @@
 
 	 	<install cmd='"%WINDIR%\system32\spool\tools\printbrm.exe" -R -F %SOFTWARE%\Printers\%FileName% -O FORCE' />
 		<remove cmd="rundll32 printui.dll,PrintUIEntry /dl /n %Printer% /q" />
+		<upgrade cmd='"%WINDIR%\system32\spool\tools\printbrm.exe" -R -F %SOFTWARE%\Printers\%FileName% -O FORCE' />
 	
 	 </package>
 	
