@@ -48,6 +48,22 @@
 </package>
 
 <package
+	id="wpkg-gp-new"
+	name="WPKG-GP"
+	revision="%version%-4"
+	priority="0"
+	reboot="false">
+	
+	<variable name="version" value="0.15" />
+	
+	<check type="uninstall" condition="versiongreaterorequal" path="Wpkg-GP %version% (x86)" value="%version%" architecture="x86" />
+  <check type="uninstall" condition="versiongreaterorequal" path="Wpkg-GP %version% (x64)" value="%version%" architecture="x64" /> 
+    <install cmd='"%SOFTWARE%\WPKG\%PROCESSOR_ARCHITECTURE%\Wpkg-GP-%version%.exe" /S /INI "%WPKG%\wpkg-gp.ini"' />> 
+    <upgrade cmd='"%SOFTWARE%\WPKG\%PROCESSOR_ARCHITECTURE%\Wpkg-GP-%version%.exe" /S /INI "%WPKG%\wpkg-gp.ini"' />> 
+
+</package>
+
+<package
   id="wpkg-gp"
   name="WPKG-GP"
   revision="%version%-4"
