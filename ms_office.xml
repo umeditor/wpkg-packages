@@ -26,7 +26,6 @@
     <exit code="3010" reboot="postponed" />
   </install>
   <install cmd='cscript "%INSTALL_DIR%\ospp.vbs" /act' />
-
   <remove  cmd='msiexec %MSI% /x{%GUID%}'><exit code="3010" reboot="postponed" /></remove>
 
 </package>
