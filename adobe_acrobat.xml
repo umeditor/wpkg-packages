@@ -60,6 +60,11 @@
                 <exit code="3010" reboot="postponed" />
         </install>
 
+        <install cmd='msiexec /qn /norestart /update "%SOFTWARE%\adobe\acrobatXI\AcrobatUpd11007.msp"' >
+                <exit code="0" />
+                <exit code="3010" reboot="postponed" />
+        </install>
+
         <upgrade cmd='msiexec /qn /norestart /update "%SOFTWARE%\adobe\acrobatXI\AcrobatUpd11007.msp"' >
                 <exit code="0" />
                 <exit code="3010" reboot="postponed" />
