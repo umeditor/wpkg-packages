@@ -19,7 +19,9 @@
 
 	 	<install cmd='"%WINDIR%\system32\spool\tools\printbrm.exe" -R -F %SOFTWARE%\Printers\%FileName% -O FORCE' />
 		<remove cmd="rundll32 printui.dll,PrintUIEntry /dl /n %Printer% /q" />
+		<upgrade cmd='net stop spooler' />
 		<upgrade cmd='"%WINDIR%\system32\spool\tools\printbrm.exe" -R -F %SOFTWARE%\Printers\%FileName% -O FORCE' />
+		<upgrade cmd='net start spooler' />
 
 	 </package>
 
