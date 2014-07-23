@@ -8,13 +8,13 @@
 		revision="%version%-0"
 		reboot="false"
 		priority="20">
-	
-	<variable name="VERSION" value="7" />
-	<variable name="PKG_SOURCE" value="%SOFTWARE%\SecureCRTFX\mit-securecrtfx-711.exe"     architecture="x86" />
-    <variable name="PKG_SOURCE" value="%SOFTWARE%\SecureCRTFX\mit-securecrtfx-711-x64" architecture="x64" />
-		
-	<check type="uninstall" condition="versiongreaterorequal" path="VanDyke Software SecureCRT and SecureFX 7.1" value="%VERSION%"/>
-	
+
+	<variable name="VERSION" value="7.2.5" />
+	<variable name="PKG_SOURCE" value="%SOFTWARE%\SecureCRTFX\mit-securecrtfx-725.exe"     architecture="x86" />
+    <variable name="PKG_SOURCE" value="%SOFTWARE%\SecureCRTFX\mit-securecrtfx-725-x64" architecture="x64" />
+
+	<check type="uninstall" condition="versiongreaterorequal" path="VanDyke Software SecureCRT and SecureFX 7.2" value="%VERSION%"/>
+
 	<install cmd='"%PKG_SOURCE%" /s /v"/qn"'><exit code="3010" /></install>
  	<upgrade   include='install' />
  	<downgrade include='install' />
