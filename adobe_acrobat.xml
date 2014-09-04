@@ -43,12 +43,12 @@
   <package
    id="acrobat11"
    name="Adobe Acrobat XI"
-   revision="11.0.7.2"
+   revision="11.0.8"
    reboot="false"
    priority="55">
 
         <check type="uninstall" condition="exists" path="Adobe Acrobat XI Pro" />
-        <check type="uninstall" condition="versiongreaterorequal" path="Adobe Acrobat XI Pro" value="11.0.07" />
+        <check type="uninstall" condition="versiongreaterorequal" path="Adobe Acrobat XI Pro" value="11.0.08" />
 
       <check type="logical" condition="or">
         <check type="file" condition="versiongreaterorequal" path="%PROGRAMFILES%\Adobe\Acrobat 11.0\Acrobat\Acrobat.dll" value="11.0.7.79" />
@@ -60,12 +60,12 @@
                 <exit code="3010" reboot="postponed" />
         </install>
 
-        <install cmd='msiexec /qn /norestart /update "%SOFTWARE%\adobe\acrobatXI\AcrobatUpd11007.msp"' >
+        <install cmd='msiexec /qn /norestart /update "%SOFTWARE%\adobe\acrobatXI\AcrobatSecUpd11008.msp"' >
                 <exit code="0" />
                 <exit code="3010" reboot="postponed" />
         </install>
 
-        <upgrade cmd='msiexec /qn /norestart /update "%SOFTWARE%\adobe\acrobatXI\AcrobatUpd11007.msp"' >
+        <upgrade cmd='msiexec /qn /norestart /update "%SOFTWARE%\adobe\acrobatXI\AcrobatSecUpd11008.msp"' >
                 <exit code="0" />
                 <exit code="3010" reboot="postponed" />
         </upgrade>
