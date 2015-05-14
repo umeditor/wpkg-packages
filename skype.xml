@@ -8,18 +8,20 @@
   4) Skype will choke on the install if we are trying to upgrade minor
      versions - hence the uninstall before installing.
      There is no logic to when we need to uninstall first, so we run through all
+  5) The .32 in the version is for corporate/business builds
+  6) Direct download link: http://www.skype.com/go/getskype-msi
 -->
 
 <packages>
 
 <package
   id="skype"
-  name="Skype 6"
-  revision="%version%-0"
+  name="Skype 7"
+  revision="%version%-1"
   reboot="false"
   priority="10">
 
-  <variable name='version' value='6.7.32.102' />
+  <variable name='version' value='7.4.102' />
   <variable name='flags' value='INSTALLLEVEL=1 ALLUSERS=1 STARTSKYPE=FALSE TRANSFORMS=:removeStartup.mst TRANSFORMS=:removeDesktopShortcut.mst' />
   <variable name='PKG_DESTINATION' value='%PROGRAMFILES%\Skype\Phone'      architecture="x86" />
   <variable name='PKG_DESTINATION' value='%PROGRAMFILES(x86)%\Skype\Phone' architecture="x64" />
@@ -31,12 +33,19 @@
   <install cmd='msiexec %MSI% /x{9C538746-C2DC-40FC-B1FB-D4EA7966ABEB}'><exit code="1605" /></install> <!-- 5.0 -->
   <install cmd='msiexec %MSI% /x{F1CECE09-7CBE-4E98-B435-DA87CDA86167}'><exit code="1605" /></install> <!-- 5.3 -->
   <install cmd='msiexec %MSI% /x{1845470B-EB14-4ABC-835B-E36C693DC07D}'><exit code="1605" /></install> <!-- 5.8 -->
-  <install cmd='msiexec %MSI% /i "%SOFTWARE%\Skype\%version%\SkypeSetup.msi" %flags%'/>
+  <install cmd='msiexec %MSI% /x "%SOFTWARE%\Skype\6.11.32.102\SkypeSetup.msi" %flags%'><exit code='any' /></install>
+  <install cmd='msiexec %MSI% /x "%SOFTWARE%\Skype\6.14.32.104\SkypeSetup.msi" %flags%'><exit code='any' /></install>
+  <install cmd='msiexec %MSI% /x "%SOFTWARE%\Skype\6.16.32.105\SkypeSetup.msi" %flags%'><exit code='any' /></install>
+  <install cmd='msiexec %MSI% /x "%SOFTWARE%\Skype\6.18.32.105\SkypeSetup.msi" %flags%'><exit code='any' /></install>
+  <install cmd='msiexec %MSI% /x "%SOFTWARE%\Skype\6.21.32.104\SkypeSetup.msi" %flags%'><exit code='any' /></install>
+  <install cmd='msiexec %MSI% /x "%SOFTWARE%\Skype\7.0.32.102\SkypeSetup.msi" %flags%'><exit code='any' /></install>
+  <install cmd='msiexec %MSI% /x "%SOFTWARE%\Skype\7.1.32.105\SkypeSetup.msi" %flags%'><exit code='any' /></install>
+  <install cmd='msiexec %MSI% /i "%SOFTWARE%\Skype\%version%\SkypeSetup.msi" %flags%' timeout='300' />
   <install cmd='%COMSPEC% /C reg add "HKLM\Software\Policies\Skype\Phone" /v "DisableVersionCheckPolicy" /d "1" /t REG_DWORD /f' />
   <install cmd='%COMSPEC% /C reg add "HKLM\Software\Policies\Skype\Phone" /v "DisableSupernodePolicy" /d "1" /t REG_DWORD /f' />
   <install cmd='%COMSPEC% /C reg delete "HKCU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Run" /v "Skype" /f' ><exit code="1" /></install>
 
-  <upgrade include='install' />
+  <upgrade   include='install' />
   <downgrade include='install' />
 
   <remove include='kill' />
@@ -44,6 +53,7 @@
 
   <commands>
     <command type='kill' cmd='"%PKG_DESTINATION%\Skype.exe" /shutdown'><exit code='any' /></command>
+    <command type='kill' cmd='taskkill /f /im skype.exe'><exit code='any' /></command>
   </commands>
 
 </package>
